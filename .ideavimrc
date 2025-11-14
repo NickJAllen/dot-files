@@ -1,0 +1,92 @@
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+set relativenumber
+set number
+set easymotion
+set functiontextobj
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+let mapleader = " "
+
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>l
+vnoremap <C-s> <Esc>:w<CR>
+
+map ]m :action MethodDown<CR>
+map [m :action MethodUp<CR>
+map ]e :action GotoNextError<CR>
+map [e :action GotoPreviousError<CR>
+
+"Code actions, refactoring and formatting"
+map <leader>cr :action RenameElement<CR>
+map <leader>cf :action ReformatCode<CR>
+map <leader>co :action OptimizeImports<CR>
+map <leader>ca :action ShowIntentionActions<CR>
+map <leader>cl :action SilentCodeCleanup<CR>
+map <leader>cc :action NewClass<CR>
+map <leader>cm :action Move<CR>
+map <leader>cv :action IntroduceVariable<CR>
+map <leader>cx :action ExtractMethod<CR>
+map <leader>ci :action Inline<CR>
+
+"Version control"
+map <leader>vc :action CheckinProject<CR>
+map <leader>vp :action Vcs.Push<CR>
+
+"Navigating"
+map <leader>nt :action TypeHierarchy<CR>
+map <leader>nc :action CallHierarchy<CR>
+map <leader>np :action SelectInProjectView<CR>
+map <leader>ne :action ActivateTerminalToolWindow<CR>
+map <leader>ng :action SelectIn<CR>
+
+"Go to..."
+map <leader>gu :action GotoSuperMethod<CR>
+map <leader>gd :action GotoImplementation<CR>
+
+"Debug"
+map <leader>db :action ToggleLineBreakpoint<CR>
+map <leader>dd :action Debug<CR>
+map <leader>ds :action Stop<CR>
+map <leader>dr :action RunnerActions<CR>
+
+"Building"
+map <leader>bp :action CompileDirty<CR>
+
+"Expanding and shrinking selection"
+map <leader>k :action EditorSelectWord<CR>
+map <leader>j :action EditorUnSelectWord<CR>
+
+"Search"
+map <leader>sc :action GotoClass<CR>
+map <leader>ss :action GotoSymbol<CR>
+map <leader>sf :action GotoFile<CR>
+map <leader>sa :action GotoAction<CR>
+map <leader>sr :action RecentProjectListGroup<CR>
+map <leader>st :action GotoTest<CR>
+map <leader>so :action FileStructurePopup<CR>
+
+"EasyMotion"
+map <leader>w <Plug>(easymotion-bd-w)
+map <leader>l <Plug>(easymotion-bd-jk)
+map <leader>h <Plug>(easymotion-s2)
+
+nnoremap <Hyper-c> <Esc>
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'

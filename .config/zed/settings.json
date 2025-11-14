@@ -1,0 +1,44 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Ayu Dark"
+  },
+  "tab_bar": {
+    // Whether or not to show the tab bar in the editor
+    "show": false,
+    // Whether or not to show the navigation history buttons.
+    "show_nav_history_buttons": true,
+    // Whether or not to show the tab bar buttons.
+    "show_tab_bar_buttons": true
+  },
+  // Titlebar related settings
+  "title_bar": {
+    // Whether to show the branch icon beside branch switcher in the titlebar.
+    "show_branch_icon": false,
+    // Whether to show the branch name button in the titlebar.
+    "show_branch_name": true,
+    // Whether to show the project host and name in the titlebar.
+    "show_project_items": false,
+    // Whether to show onboarding banners in the titlebar.
+    "show_onboarding_banner": false,
+    // Whether to show user picture in the titlebar.
+    "show_user_picture": false,
+    // Whether to show the sign in button in the titlebar.
+    "show_sign_in": false,
+    // Whether to show the menus in the titlebar.
+    "show_menus": false
+  }
+}

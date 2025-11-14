@@ -1,0 +1,72 @@
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>l
+vnoremap <C-s> <Esc>:w<CR>
+
+"Code actions and formatting"
+nmap <leader>cf :vscode editor.action.formatDocument<CR>
+vmap <leader>cf :vscode editor.action.formatSelection<CR>
+map <leader>co :vscode editor.action.organizeImports<CR>
+map <leader>cr :vscode editor.action.rename<CR>
+map <leader>cR :vscode renameFile<CR>
+map <leader>ca :vscode editor.action.sourceAction<CR>
+map <leader>cq :vscode editor.action.quickFix<CR>
+
+"Expanding and shrinking selection"
+map <leader>k :vscode editor.action.smartSelect.grow<CR>
+map <leader>j :vscode editor.action.smartSelect.shrink<CR>
+
+"Version control"
+map <leader>vc :vscode hg.commit<CR>
+map <leader>ve :vscode workbench.view.scm<CR>
+
+"Debug"
+map <leader>db :vscode editor.debug.action.toggleBreakpoint<CR>
+map <leader>dd :vscode workbench.action.debug.start<CR>
+map <leader>dc :vscode workbench.action.debug.continue<CR>
+map <leader>dC :vscode editor.debug.action.runToCursor<CR>
+map <leader>dt :vscode workbench.action.debug.stop<CR>
+map <leader>di :vscode workbench.action.debug.stepInto<CR>
+map <leader>do :vscode workbench.action.debug.stepOut<CR>
+map <leader>de :vscode workbench.debug.viewlet.action.addWatchExpression<CR>
+
+"Building"
+map <leader>b :vscode cmake.build<CR>
+
+"Search"
+map <leader>sr :vscode workbench.action.openRecent<CR>
+map <leader>sc :vscode workbench.action.showAllSymbols<CR>
+map <leader>ss :vscode workbench.action.showAllSymbols<CR>
+map <leader>sa :vscode workbench.action.showCommands<CR>
+map <leader>sf :vscode workbench.action.quickOpen<CR>
+map <leader>so :vscode workbench.action.gotoSymbol<CR>
+
+"Navigating"
+map <leader>np :vscode workbench.files.action.focusFilesExplorer<CR> 
+map <leader>ne :vscode workbench.action.terminal.toggleTerminal<CR>
+map <leader>nc :vscode references-view.showCallHierarchy<CR>
+map <leader>nt :vscode java.action.showTypeHierarchy<CR>
+map <leader>nr :vscode references-view.findReferences<CR>
+
+"Go in editor"
+map <leader>gh :vscode clangd.switchheadersource<CR>
+
+"Next info, warning, error"
+map ]i :vscode editor.action.marker.next<CR>
+map ]I :vscode editor.action.marker.nextInFiles<CR>
+map ]w :vscode go-to-next-error.next.warning<CR>
+map ]W :vscode go-to-next-error.nextInFiles.warning<CR>
+map ]e :vscode go-to-next-error.next.error<CR>
+map ]E :vscode go-to-next-error.nextInFiles.error<CR>
+
+"Previous info, warning, error"
+map [i :vscode editor.action.marker.prev<CR>
+map [I :vscode editor.action.marker.prevInFiles<CR>
+map [w :vscode go-to-next-error.prev.warning<CR>
+map [W :vscode go-to-next-error.prevInFiles.warning<CR>
+map [e :vscode go-to-next-error.prev.error<CR>
+map [E :vscode go-to-next-error.prevInFiles.error<CR>

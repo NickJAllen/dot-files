@@ -1,0 +1,4 @@
+! Change Super key to send Meta instead as Java doesn't support super modifier
+clear mod4
+keycode 133 = Meta_L
+add mod1 = Meta_L

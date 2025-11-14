@@ -1,0 +1,61 @@
+let mapleader = " "
+" Set the leader key to Space
+let mapleader = " "
+
+" Unmap the default behavior of space in normal mode
+" This ensures that pressing space by itself does nothing,
+" unless it's followed by a leader mapping.
+nnoremap <Space> <Nop>
+
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>l
+vnoremap <C-s> <Esc>:w<CR>
+
+eclipseaction EclipseFormat org.eclipse.jdt.ui.edit.text.java.format
+eclipseaction EclipseGoToDef org.eclipse.jdt.ui.edit.text.java.open.editor
+eclipseuiaction EclipseGoToFile org.eclipse.ui.navigate.openResource
+eclipseaction EclipseGoToType org.eclipse.jdt.ui.navigate.open.type
+eclipseuiaction EclipseGoToOutline org.eclipse.jdt.ui.edit.text.java.show.outline
+eclipseaction EclipseInvokeCommand org.eclipse.ui.window.quickAccess
+eclipseuiaction EclipseNewClass org.eclipse.jdt.ui.actions.NewClass
+eclipseaction EclipseOrganizeImports org.eclipse.jdt.ui.edit.text.java.organize.imports
+eclipseuiaction EclipseQuickFix org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+eclipseuiaction EclipseRename org.eclipse.jdt.ui.edit.text.java.rename.element
+eclipseaction EclipseCallHierarchy org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
+eclipseaction EclipseTypeHierarchy org.eclipse.jdt.ui.edit.text.java.open.type.hierarchy
+eclipseaction EclipseToggleBreakpoint org.eclipse.debug.ui.commands.ToggleBreakpoint
+eclipseaction EclipseDebugLast org.eclipse.debug.ui.commands.DebugLast
+eclipseaction EclipseDebugTerminate org.eclipse.debug.ui.commands.Terminate
+eclipseaction EclipseExpandSelection org.eclipse.jdt.ui.edit.text.java.select.enclosing
+eclipseaction EclipseShrinkSelection org.eclipse.ui.edit.text.select.restore
+
+"Code actions, refactoring and formatting"
+map <Space>cr :EclipseRename<cr>
+map <Space>cf :EclipseFormat<cr>
+map <Space>co :EclipseOrganizeImports<cr>
+map <Space>ca :EclipseQuickFix<cr>
+map <Space>cc :EclipseNewClass<cr>
+
+"Navigating"
+map <Space>nt :EclipseTypeHierarchy<cr>
+map <Space>nc :EclipseCallHierarchy<cr>
+
+"Debug"
+map <Space>db :EclipseToggleBreakpoint<cr>
+map <Space>dd :EclipseDebugLast<cr>
+map <Space>ds :EclipseDebugTerminate<cr>
+
+"Expanding and shrinking selection"
+map <Space>k :EclipseExpandSelection<cr>
+map <Space>j :EclipseShrinkSelection<cr>
+
+"Search"
+map <Space>sf :EclipseGoToFile<cr>
+map <Space>sc :EclipseGoToType<cr>
+map <Space>sa :EclipseInvokeCommand<cr>
+map <Space>so :EclipseGoToOutline<cr>
