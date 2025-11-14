@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd $HOME/dev/bitwig/local.hg
+hg push

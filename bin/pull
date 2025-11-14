@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cd $HOME/dev/bitwig/incoming.hg
+hg pull
+
+cd ../local.hg
+hg pull ../incoming.hg
+
+cd ../fixes
+hg pull
+echo "\n\nFixes:\n"
+hg up
+echo "\n\nDev:\n"
+cd ../dev
+hg up
+
+echo "\n\nReleases:\n"
+cd ../releases
+hg up
+
