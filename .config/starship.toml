@@ -1,0 +1,3 @@
+[hg_branch]
+format = 'on [🌱 $branch](bold purple) '
+disabled = false
