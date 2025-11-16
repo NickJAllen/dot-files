@@ -32,23 +32,11 @@ require 'autocommands'
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 
--- Random colorscheme on startup
-local schemes = {
-  'duskfox',
-  'nightfox',
-  'onedark',
-  'catppuccin-mocha',
-  'tokyonight-night',
-  'kanagawa',
-}
-
 math.randomseed(os.time())
 
-local scheme = schemes[math.random(#schemes)]
-local ok, _ = pcall(vim.cmd, 'colorscheme ' .. scheme)
-if not ok then
-  vim.notify('Colorscheme ' .. scheme .. ' not found!', vim.log.levels.ERROR)
-end
+local utils = require 'nick.utils'
+
+utils.choose_random_colorscheme()
 
 local jdtls_bundles = {
   vim.fs.joinpath(vim.fn.stdpath 'data', 'mason', 'share', 'java-debug-adapter', 'com.microsoft.java.debug.plugin.jar'),

@@ -76,3 +76,7 @@ end, { desc = 'Run command on each file in the quickfix list' })
 vim.keymap.set('n', '<leader>ac', function()
   nick.utils.cancel_actions()
 end, { desc = 'Cancel automated actions' })
+
+-- Utilities
+
+vim.keymap.set('n', '<leader>ur', nick.utils.choose_random_colorscheme, { desc = 'Choose random colorscheme' })

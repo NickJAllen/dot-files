@@ -483,4 +483,23 @@ function M.quickfix_item_do()
   M.quickfix_item_do_command(command)
 end
 
+function M.choose_random_colorscheme()
+  -- Random colorscheme on startup
+  local schemes = {
+    'duskfox',
+    'nightfox',
+    'onedark',
+    'catppuccin-mocha',
+    'tokyonight-night',
+    'kanagawa',
+  }
+
+  local scheme = schemes[math.random(#schemes)]
+  local ok, _ = pcall(vim.cmd, 'colorscheme ' .. scheme)
+
+  if not ok then
+    vim.notify('Colorscheme ' .. scheme .. ' not found!', vim.log.levels.ERROR)
+  end
+end
+
 return M
