@@ -1,4 +1,17 @@
+local function is_dap_buffer()
+  return require('cmp_dap').is_dap_buffer()
+end
+
 return {
+  {
+    'saghen/blink.compat',
+    -- use v2.* for blink.cmp v1.*
+    version = '2.*',
+    -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+    lazy = true,
+    -- make sure to set opts so that lazy.nvim calls blink.compat's setup
+    opts = {},
+  },
   { -- Autocompletion
     'saghen/blink.cmp',
     event = 'VimEnter',
@@ -26,6 +39,9 @@ return {
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
             end,
+          },
+          {
+            'rcarriga/cmp-dap',
           },
         },
         opts = {},
@@ -76,9 +92,16 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = function()
+          if is_dap_buffer() then
+            return { 'dap', 'snippets', 'lazydev' }
+          end
+
+          return { 'lsp', 'path', 'snippets', 'lazydev' }
+        end,
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          dap = { name = 'dap', module = 'blink.compat.source' },
         },
       },
 
