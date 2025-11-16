@@ -70,6 +70,7 @@ return {
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
         { '<leader>u', group = 'Utility' },
+        { '<leader>v', group = 'Version Control' },
       },
     },
   },
