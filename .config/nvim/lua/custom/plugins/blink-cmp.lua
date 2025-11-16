@@ -40,12 +40,10 @@ return {
               require('luasnip.loaders.from_vscode').lazy_load()
             end,
           },
-          {
-            'rcarriga/cmp-dap',
-          },
         },
         opts = {},
       },
+      'rcarriga/cmp-dap',
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
