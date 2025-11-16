@@ -161,6 +161,34 @@ return {
       desc = 'Debug: Restart Frame',
     },
     {
+      '<leader>dk',
+      function()
+        require('dap').up()
+      end,
+      desc = 'Debug: Go Up Stack',
+    },
+    {
+      '<F2>',
+      function()
+        require('dap').up()
+      end,
+      desc = 'Debug: Go Up Stack',
+    },
+    {
+      '<leader>dj',
+      function()
+        require('dap').down()
+      end,
+      desc = 'Debug: Go Down Stack',
+    },
+    {
+      '<F3>',
+      function()
+        require('dap').down()
+      end,
+      desc = 'Debug: Go Down Stack',
+    },
+    {
       '<leader>dB',
       function()
         require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
