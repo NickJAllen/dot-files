@@ -33,6 +33,18 @@ local function toggle_debug_ui()
   end
 end
 
+local function get_breakpoint_condition(callback)
+  vim.ui.input({
+    prompt = 'Breakpoint Condition',
+  }, callback)
+end
+
+local function set_conditional_breakpoint()
+  get_breakpoint_condition(function(condition)
+    require('dap').set_breakpoint(condition)
+  end)
+end
+
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -190,10 +202,8 @@ return {
     },
     {
       '<leader>dB',
-      function()
-        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end,
-      desc = 'Debug: Set Breakpoint',
+      set_conditional_breakpoint,
+      desc = 'Debug: Set Conditional Breakpoint',
     },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     {
