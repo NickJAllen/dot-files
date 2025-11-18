@@ -18,6 +18,15 @@ vim.o.exrc = true
 -- Disable swap file as this was annoying me
 vim.opt.swapfile = false
 
+vim.opt.fillchars = {
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+  diff = '╱',
+  eob = ' ',
+}
+
 -- [[ Setting options ]]
 require 'options'
 
@@ -43,7 +52,7 @@ local jdtls_bundles = {
 }
 
 vim.lsp.config('jdtls', {
-  before_init = function(params, config)
+  before_init = function(_, config)
     local root_dir = config.root_dir
 
     -- print('Before init jdtls with root dir' .. tostring(root_dir))
