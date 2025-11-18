@@ -27,6 +27,8 @@ vim.opt.fillchars = {
   eob = ' ',
 }
 
+vim.o.background = 'dark'
+
 -- [[ Setting options ]]
 require 'options'
 
