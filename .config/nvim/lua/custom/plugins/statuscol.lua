@@ -14,6 +14,8 @@ return {
             click = 'v:lua.ScSa',
           },
           { text = { builtin.lnumfunc }, click = 'v:lua.ScLa' },
+          --padding
+          { text = { ' ' }, click = 'v:lua.ScL', hl = 'Normal' },
         },
       }
     end,
