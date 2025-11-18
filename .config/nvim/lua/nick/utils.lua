@@ -491,6 +491,7 @@ local function get_random_colorscheme()
     'catppuccin-mocha',
     'tokyonight-night',
     'kanagawa',
+    'thorn',
   }
 
   while true do
