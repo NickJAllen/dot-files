@@ -80,4 +80,6 @@ vim.o.confirm = true
 vim.opt.foldenable = false
 vim.opt.foldlevel = 1
 
+vim.opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+
 -- vim: ts=2 sts=2 sw=2 et
