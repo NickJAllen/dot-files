@@ -96,4 +96,5 @@ vim.lsp.config('jdtls', {
 vim.lsp.enable 'jdtls'
 vim.lsp.enable 'clangd'
 
+require('lualine').setup()
 require('overseer').setup()
