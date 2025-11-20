@@ -3,8 +3,8 @@ require('lazy').setup({
   'nvim-lua/plenary.nvim',
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
-  { import = 'custom.themes' },
-  { import = 'custom.plugins' },
+  { import = 'themes' },
+  { import = 'plugins' },
 }, {
 
   dev = {
