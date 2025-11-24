@@ -49,9 +49,29 @@ local utils = require 'nick.utils'
 
 utils.choose_random_colorscheme()
 
-local jdtls_bundles = {
-  vim.fs.joinpath(vim.fn.stdpath 'data', 'mason', 'share', 'java-debug-adapter', 'com.microsoft.java.debug.plugin.jar'),
-}
+local function find_jdtls_bundles()
+  local dap_jar_path =
+    vim.fs.joinpath(vim.fn.stdpath 'data', 'mason', 'packages', 'java-debug-adapter', 'extension', 'server', 'com.microsoft.java.debug.plugin-*.jar')
+
+  local bundles = {
+    vim.fn.glob(dap_jar_path, 1),
+  }
+
+  local java_test_jars = vim.fs.joinpath(vim.fn.stdpath 'data', 'mason', 'packages', 'java-test', 'extension', 'server', '*.jar')
+  local java_test_bundles = vim.split(vim.fn.glob(java_test_jars, 1), '\n')
+  local excluded = {
+    'com.microsoft.java.test.runner-jar-with-dependencies.jar',
+    'jacocoagent.jar',
+  }
+  for _, java_test_jar in ipairs(java_test_bundles) do
+    local fname = vim.fn.fnamemodify(java_test_jar, ':t')
+    if not vim.tbl_contains(excluded, fname) then
+      table.insert(bundles, java_test_jar)
+    end
+  end
+
+  return bundles
+end
 
 vim.lsp.config('jdtls', {
   before_init = function(_, config)
@@ -75,7 +95,7 @@ vim.lsp.config('jdtls', {
     config.settings.java['format'] = formattingSettings
   end,
   init_options = {
-    bundles = jdtls_bundles,
+    bundles = find_jdtls_bundles(),
   },
   settings = {
     java = {
