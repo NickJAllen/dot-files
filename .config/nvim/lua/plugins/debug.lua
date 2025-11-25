@@ -95,7 +95,7 @@ return {
       desc = 'Debug: Run Last',
     },
     {
-      '<leader>dt',
+      '<leader>dq',
       function()
         require('dap').terminate()
       end,

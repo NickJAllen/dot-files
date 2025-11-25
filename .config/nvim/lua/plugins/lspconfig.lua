@@ -168,6 +168,14 @@ return {
               jdtls.extract_method()
             end, 'Extract Method')
 
+            map('<leader>dt', function()
+              jdtls.test_nearest_method()
+            end, 'Debug Test Method')
+
+            map('<leader>dT', function()
+              jdtls.test_class()
+            end, 'Debug Test Class')
+
             map('<leader>jb', ':JdtCompile<CR>', 'Build Java')
           end
         end,
