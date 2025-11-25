@@ -2,6 +2,8 @@ local excluded_files = { '.git', '.jj', '.hg', '*.class', 'compileTransaction', 
 
 return {
   'folke/snacks.nvim',
+  lazy = false,
+  priority = 1000,
   ---@type snacks.Config
   opts = {
     picker = {
@@ -33,6 +35,9 @@ return {
       enabled = true,
     },
     bufdelete = {
+      enabled = true,
+    },
+    dashboard = {
       enabled = true,
     },
     -- notifier = {},
