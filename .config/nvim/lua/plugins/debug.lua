@@ -7,11 +7,11 @@
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 --
 
-local should_use_dap_ui = false
+local should_use_dap_ui = true
 
 local function open_debug_ui()
   if should_use_dap_ui then
-    require('dap-ui').open()
+    require('dapui').open()
   else
     require('dap-view').open()
   end
@@ -19,7 +19,7 @@ end
 
 local function close_debug_ui()
   if should_use_dap_ui then
-    require('dap-ui').close()
+    require('dapui').close()
   else
     require('dap-view').close()
   end
@@ -27,7 +27,7 @@ end
 
 local function toggle_debug_ui()
   if should_use_dap_ui then
-    require('dap-ui').toggle()
+    require('dapui').toggle()
   else
     require('dap-view').toggle()
   end
