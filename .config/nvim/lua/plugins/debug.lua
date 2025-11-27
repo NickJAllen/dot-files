@@ -71,91 +71,98 @@ return {
       function()
         require('dap').continue()
       end,
-      desc = 'Debug: Start/Continue',
+      desc = 'Start/Continue',
     },
     {
       '<F5>',
       function()
         require('dap').continue()
       end,
-      desc = 'Debug: Start/Continue',
+      desc = 'Start/Continue',
     },
     {
       '<leader>dl', -- this is Shift F5 on mac
       function()
         require('dap').run_last()
       end,
-      desc = 'Debug: Run Last',
+      desc = 'Run Last',
     },
     {
       '<F17>', -- this is Shift F5 on mac
       function()
         require('dap').run_last()
       end,
-      desc = 'Debug: Run Last',
+      desc = 'Run Last',
     },
     {
       '<leader>dq',
       function()
         require('dap').terminate()
       end,
-      desc = 'Debug: Terminate',
+      desc = 'Terminate',
     },
     {
       '<F6>',
       function()
         require('dap').terminate()
       end,
-      desc = 'Debug: Terminate',
+      desc = 'Terminate',
+    },
+    {
+      '<leader>dc',
+      function()
+        require('dap').run_to_cursor()
+      end,
+      desc = 'Run to Cursor',
     },
     {
       '<leader>dn',
       function()
         require('dap').step_over()
       end,
-      desc = 'Debug: Step Over',
+      desc = 'Step Over',
     },
     {
       '<F10>',
       function()
         require('dap').step_over()
       end,
-      desc = 'Debug: Step Over',
+      desc = 'Step Over',
     },
     {
       '<leader>di',
       function()
         require('dap').step_into()
       end,
-      desc = 'Debug: Step Into',
+      desc = 'Step Into',
     },
     {
       '<F11>',
       function()
         require('dap').step_into()
       end,
-      desc = 'Debug: Step Into',
+      desc = 'Step Into',
     },
     {
       '<leader>do',
       function()
         require('dap').step_out()
       end,
-      desc = 'Debug: Step Out',
+      desc = 'Step Out',
     },
     {
       '<F12>',
       function()
         require('dap').step_out()
       end,
-      desc = 'Debug: Step Out',
+      desc = 'Step Out',
     },
     {
       '<leader>db',
       function()
         require('dap').toggle_breakpoint()
       end,
-      desc = 'Debug: Toggle Breakpoint',
+      desc = 'Toggle Breakpoint',
     },
     {
       '<leader>dm',
@@ -163,58 +170,58 @@ return {
         local trace_massage = vim.fn.input 'Enter tracepoint expression: '
         require('dap').set_breakpoint(nil, nil, trace_massage)
       end,
-      desc = 'Debug: Set Tracepoint Message',
+      desc = 'Set Tracepoint Message',
     },
     {
       '<leader>dr',
       function()
         require('dap').restart_frame()
       end,
-      desc = 'Debug: Restart Frame',
+      desc = 'Restart Frame',
     },
     {
       '<leader>dk',
       function()
         require('dap').up()
       end,
-      desc = 'Debug: Go Up Stack',
+      desc = 'Go Up Stack',
     },
     {
       '<F2>',
       function()
         require('dap').up()
       end,
-      desc = 'Debug: Go Up Stack',
+      desc = 'Go Up Stack',
     },
     {
       '<leader>dj',
       function()
         require('dap').down()
       end,
-      desc = 'Debug: Go Down Stack',
+      desc = 'Go Down Stack',
     },
     {
       '<F3>',
       function()
         require('dap').down()
       end,
-      desc = 'Debug: Go Down Stack',
+      desc = 'Go Down Stack',
     },
     {
       '<leader>dB',
       set_conditional_breakpoint,
-      desc = 'Debug: Set Conditional Breakpoint',
+      desc = 'Set Conditional Breakpoint',
     },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     {
       '<leader>du',
       toggle_debug_ui,
-      desc = 'Debug: Toggle UI.',
+      desc = 'Toggle UI.',
     },
     {
       '<F7>',
       toggle_debug_ui,
-      desc = 'Debug: Toggle UI.',
+      desc = 'Toggle UI.',
     },
   },
   config = function()
