@@ -74,8 +74,8 @@ return {
         preset = 'default',
 
         -- This tells blink.cmp NOT to map <Tab> or <S-Tab>
-        ['<Tab>'] = nil,
-        ['<S-Tab>'] = nil,
+        ['<Tab>'] = false,
+        ['<S-Tab>'] = false,
         --
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
