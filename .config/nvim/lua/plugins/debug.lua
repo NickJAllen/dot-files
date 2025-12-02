@@ -1,4 +1,4 @@
-local should_use_dap_ui = true
+local should_use_dap_ui = false
 
 local function open_debug_ui()
   if should_use_dap_ui then
