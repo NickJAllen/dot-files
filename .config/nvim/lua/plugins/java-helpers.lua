@@ -1,7 +1,7 @@
 return {
   {
     'NickJAllen/java-helpers.nvim',
-    dev = true,
+    -- dev = true,
     cmd = 'JavaHelpersNewFile',
     opts = {},
     keys = {
