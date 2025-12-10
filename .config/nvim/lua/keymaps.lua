@@ -76,3 +76,7 @@ end, { desc = 'Cancel automated actions' })
 -- Utilities
 
 vim.keymap.set('n', '<leader>ur', nick.utils.choose_random_colorscheme, { desc = 'Choose random colorscheme' })
+
+-- Mercurial
+
+vim.keymap.set('n', '<leader>ma', nick.mercurial.toggle_annotations, { desc = 'Toggle mercurial annotations' })

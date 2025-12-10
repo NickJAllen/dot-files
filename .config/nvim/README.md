@@ -6,3 +6,4 @@ Problems to solve:
 * Follow Java stack trace links quickly from debug output
 * How to see terminal output when using dap-ui
 * Make breakpoints persist across sessions
+* Show hg annotate in margin
