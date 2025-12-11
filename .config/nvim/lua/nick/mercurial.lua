@@ -44,13 +44,11 @@ local function clear_blame(buf)
 end
 
 -- Function to run the costly HG command once and cache results (rev and user only)
-local function run_and_cache_blame(filepath)
+local function run_and_cache_annotate(filepath)
   local buf = vim.api.nvim_get_current_buf()
-  -- Command to run: -n (revision number), -u (user)
   local cmd = { 'hg', 'annotate', '-T', "{lines % '{rev},{user}\n'}", filepath }
   log.info('Caching full blame: ' .. table.concat(cmd, ' '))
 
-  -- WARNING: SYNCHRONOUS
   local output = vim.fn.system(cmd)
   if vim.v.shell_error ~= 0 then
     log.error "hg annotate failed. Is 'hg' installed and is this a Mercurial repo?"
@@ -61,8 +59,6 @@ local function run_and_cache_blame(filepath)
   local annotations = {}
 
   for i, line in ipairs(lines) do
-    -- Line format: "1234: user: The file content..."
-    -- Use limit=3 to ensure content containing ':' doesn't break parsing
     local parts = vim.split(line, ',', { plain = true, trimempty = true, limit = 3 })
     if #parts >= 2 then
       annotations[i] = {
@@ -76,9 +72,43 @@ local function run_and_cache_blame(filepath)
   return annotations
 end
 
+local function apply_annotations(buf, annotations)
+  local max_rev_length = 0
+  local max_user_length = 0
+
+  for _, data in pairs(annotations) do
+    max_rev_length = math.max(max_rev_length, #data.rev)
+    max_user_length = math.max(max_user_length, #data.user)
+  end
+  if max_rev_length == 0 then
+    return
+  end
+
+  vim.api.nvim_buf_clear_namespace(buf, ns_id, 0, -1)
+
+  for i, data in ipairs(annotations) do
+    local line_num = i - 1
+
+    local rev_padded = string.format('%-' .. max_rev_length .. 's', data.rev)
+    local user_padded = string.format('%-' .. max_user_length .. 's', data.user)
+
+    local virt_text = {
+      { '[' .. rev_padded .. ']', 'HgAnnotateRev' },
+      { ' ' .. user_padded, 'HgAnnotateUser' },
+    }
+
+    vim.api.nvim_buf_set_extmark(buf, ns_id, line_num, 0, {
+      virt_text = virt_text,
+      virt_text_pos = 'inline',
+    })
+  end
+  log.info 'Applied full Hg annotations to margin.'
+end
+
 -- Runs on CursorMoved
 local function update_blame_at_cursor()
   local buf = vim.api.nvim_get_current_buf()
+  local filepath = vim.api.nvim_buf_get_name(buf)
 
   -- Safety check: ensure we are tracking this buffer
   if not cache[buf] then
@@ -91,8 +121,6 @@ local function update_blame_at_cursor()
   -- Line data is 1-indexed (lua table)
   local line_data = cache[buf][lnum]
 
-  -- 1. Clear previous line's marginal V-Text and floating window
-  vim.api.nvim_buf_clear_namespace(buf, ns_id, 0, -1)
   close_float()
 
   if not line_data then
@@ -103,22 +131,8 @@ local function update_blame_at_cursor()
   local rev = line_data.rev
   local user = line_data.user
 
-  -- --- 1. Margin Blame (Rev and User - only on current line) ---
-  local virt_text = {
-    { '[' .. rev .. ']', 'HgAnnotateRev' }, -- Highlight group for rev
-    { ' ' .. user, 'HgAnnotateUser' }, -- Highlight group for user
-  }
-
-  -- Add virtual text to the current line (lnum - 1 is 0-indexed line)
-  vim.api.nvim_buf_set_extmark(buf, ns_id, lnum - 1, 0, {
-    virt_text = virt_text,
-    virt_text_pos = 'overlay', -- Left margin
-  })
-
-  -- --- 2. Message Blame (Floating Window) ---
-
   -- Get commit message (Synchronous call to hg log - this is the slow part)
-  local log_cmd = { 'hg', 'log', '-r', rev, '--template', '{desc}' }
+  local log_cmd = { 'hg', 'log', '-r', rev, '--template', '{desc}', filepath }
   local message_raw = vim.fn.system(log_cmd)
 
   if vim.v.shell_error ~= 0 then
@@ -127,43 +141,34 @@ local function update_blame_at_cursor()
   end
 
   local message_lines = vim.split(message_raw, '\n', {})
-  local message = {}
+
+  local float_content = {
+    'Commit: ' .. rev .. ' by ' .. user,
+    '-----------------------------------------',
+  }
+
   -- Clean up leading/trailing whitespace and empty lines
   for _, line in ipairs(message_lines) do
     local trimmed_line = line:match '^%s*(.-)%s*$'
     if trimmed_line and trimmed_line ~= '' then
-      table.insert(message, trimmed_line)
+      table.insert(float_content, trimmed_line)
     end
-  end
-
-  local message_text = table.concat(message, '\n')
-  if #message_text == 0 then
-    message_text = 'No commit message found.'
   end
 
   -- Prepare the buffer for the floating window
   local float_buf = vim.api.nvim_create_buf(false, true) -- Not listed, scratch
 
-  -- Add title (rev and author) and message
-  local float_content = {
-    'Commit: ' .. rev .. ' by ' .. user,
-    '-----------------------------------------',
-    message_text,
-  }
-
   vim.api.nvim_buf_set_lines(float_buf, 0, -1, false, float_content)
 
   -- Calculate window size and position
-  local win_height = math.min(#float_content, 10) + 2 -- Max 10 lines + header/separator
+  local win_height = math.min(#float_content, 10)
   local win_width = 80 -- Fixed width for message legibility
 
   -- Get current window dimensions and cursor position
   local win_info = vim.api.nvim_win_get_config(0)
   local current_cursor_row = vim.api.nvim_win_get_cursor(0)[1] - 1 -- 0-indexed row
 
-  -- Position below the cursor line
   local row = current_cursor_row + 1
-  local col = 0
 
   -- Ensure window does not go off the bottom of the screen
   -- win_info.height gives the actual height of the Neovim window (not screen)
@@ -176,6 +181,9 @@ local function update_blame_at_cursor()
     row = 0
   end
 
+  local main_win_id = vim.api.nvim_get_current_win()
+  local col = win_info.width - win_width
+
   -- Open the floating window
   float_win_id = vim.api.nvim_open_win(float_buf, true, {
     relative = 'win',
@@ -185,11 +193,13 @@ local function update_blame_at_cursor()
     height = win_height,
     style = 'minimal',
     border = 'single',
-    focusable = false, -- Don't steal focus
+    focusable = false,
   })
 
   -- Highlight the header/rev line in the float window
   vim.api.nvim_buf_add_highlight(float_buf, ns_id, 'Title', 0, 0, -1)
+
+  vim.api.nvim_set_current_win(main_win_id)
 end
 
 --- Toggles the visibility and tracking of Hg Annotate.
@@ -211,8 +221,10 @@ function M.toggle_annotations()
       return
     end
 
-    local annotations = run_and_cache_blame(filepath)
+    local annotations = run_and_cache_annotate(filepath)
+
     if annotations then
+      apply_annotations(buf, annotations)
       -- Setup autocommand to update blame on cursor movement
       vim.api.nvim_create_autocmd('CursorMoved', {
         group = augroup_id,
