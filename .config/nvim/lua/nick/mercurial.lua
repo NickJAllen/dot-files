@@ -43,6 +43,17 @@ local function clear_blame(buf)
   log.info('Cleared Hg annotations for buffer: ' .. buf)
 end
 
+---@param user string
+local function user_name_without_email(user)
+  local email_start = user:find ' <'
+
+  if not email_start or email_start < 3 then
+    return user
+  end
+
+  return user:sub(1, email_start - 1)
+end
+
 -- Function to run the costly HG command once and cache results (rev and user only)
 local function run_and_cache_annotate(filepath)
   local buf = vim.api.nvim_get_current_buf()
@@ -63,7 +74,7 @@ local function run_and_cache_annotate(filepath)
     if #parts >= 2 then
       annotations[i] = {
         rev = parts[1],
-        user = parts[2],
+        user = user_name_without_email(parts[2]),
       }
     end
   end
@@ -94,7 +105,7 @@ local function apply_annotations(buf, annotations)
 
     local virt_text = {
       { '[' .. rev_padded .. ']', 'HgAnnotateRev' },
-      { ' ' .. user_padded, 'HgAnnotateUser' },
+      { ' ' .. user_padded .. ' ', 'HgAnnotateUser' },
     }
 
     vim.api.nvim_buf_set_extmark(buf, ns_id, line_num, 0, {
@@ -144,7 +155,6 @@ local function update_blame_at_cursor()
 
   local float_content = {
     'Commit: ' .. rev .. ' by ' .. user,
-    '-----------------------------------------',
   }
 
   -- Clean up leading/trailing whitespace and empty lines
