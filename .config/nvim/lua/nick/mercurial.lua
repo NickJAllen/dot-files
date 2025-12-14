@@ -216,12 +216,12 @@ function M.toggle_annotations()
     -- Clear the autocommand specific to this buffer
     vim.api.nvim_clear_autocmds { group = augroup_name, buffer = buf }
     clear_annotate_cache(buf)
-    vim.notify('Hg Annotate: OFF', vim.log.levels.INFO)
+    log.trace 'Hg Annotate: OFF'
   else
     -- Annotation is OFF -> Turn ON
     -- Check if file is valid
     if filepath == '' or not vim.fn.isdirectory(vim.fn.fnamemodify(filepath, ':h')) then
-      vim.notify('Hg Annotate: Not a valid file or Mercurial repo.', vim.log.levels.WARN)
+      log.error 'Hg Annotate: Not a valid file or Mercurial repo.'
       return
     end
 
@@ -240,7 +240,7 @@ function M.toggle_annotations()
       -- Run immediately on toggle
       show_commit_info_at_cursor()
 
-      log.trace('Hg Annotate: ON (Tracking current line)', vim.log.levels.INFO)
+      log.trace 'Hg Annotate: ON (Tracking current line)'
     end
   end
 end
