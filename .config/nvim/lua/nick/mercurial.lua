@@ -42,6 +42,7 @@ local function clear_annotate_cache(buf)
 end
 
 ---@param user string
+---@return string
 local function user_name_without_email(user)
   local email_start = user:find ' <'
 
@@ -53,6 +54,7 @@ local function user_name_without_email(user)
 end
 
 -- Function to run the costly HG command once and cache results (rev and user only)
+---@param filepath string
 local function run_and_cache_annotate(filepath)
   local buf = vim.api.nvim_get_current_buf()
   local cmd = { 'hg', 'annotate', '-T', "{lines % '{rev},{user}\n'}", filepath }
