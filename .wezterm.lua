@@ -11,6 +11,8 @@ config.color_scheme = "Tokyo Night"
 
 config.hide_tab_bar_if_only_one_tab = true
 
+config.native_macos_fullscreen_mode = false
+
 config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = 0,
