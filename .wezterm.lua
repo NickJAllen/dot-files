@@ -6,7 +6,7 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 config.font_size = 11
-config.color_scheme = "AdventureTime"
+config.color_scheme = "GruvboxDark"
 -- config.line_height = 0.99
 
 config.hide_tab_bar_if_only_one_tab = true
