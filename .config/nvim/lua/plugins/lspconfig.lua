@@ -163,6 +163,10 @@ return {
               jdtls.test_class()
             end, 'Debug Test Class')
 
+            map('<leader>sO', function()
+              jdtls.extended_symbols()
+            end, 'Extended Outline')
+
             map('<leader>jb', ':JdtCompile<CR>', 'Build Java')
           end
 
