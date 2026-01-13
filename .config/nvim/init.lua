@@ -107,7 +107,14 @@ vim.lsp.config('jdtls', {
         cleanup = true,
       },
       cleanup = {
-        actionsOnSave = { 'addOverride', 'addFinalModifier', 'instanceofPatternMatch', 'organizeImports', 'lambdaExpression', 'switchExpression' },
+        actionsOnSave = {
+          'addOverride',
+          'addFinalModifier',
+          'instanceofPatternMatch',
+          'organizeImports',
+          'lambdaExpression',
+          -- 'switchExpression',
+        },
       },
     },
   },
