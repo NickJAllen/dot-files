@@ -67,6 +67,8 @@ return {
         { '<leader>f', group = 'Find' },
         { '<leader>g', group = 'Git' },
         { '<leader>j', group = 'Java' },
+        { '<leader>m', group = 'Mercurial' },
+        { '<leader>o', group = 'Overseer' },
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
         { '<leader>u', group = 'Utility' },
