@@ -36,6 +36,25 @@ local function set_conditional_breakpoint()
   end)
 end
 
+local function switch_session()
+  local sessions = require('dap').sessions()
+  local session_list = {}
+  for id, session in pairs(sessions) do
+    table.insert(session_list, { id = id, name = session.config.name or id })
+  end
+
+  vim.ui.select(session_list, {
+    prompt = 'Select Debug Session:',
+    format_item = function(item)
+      return item.name
+    end,
+  }, function(choice)
+    if choice then
+      require('dap').set_session(sessions[choice.id])
+    end
+  end)
+end
+
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -209,6 +228,18 @@ return {
       '<F7>',
       toggle_debug_ui,
       desc = 'Toggle UI.',
+    },
+    {
+      '<leader>ds',
+      switch_session,
+      { desc = 'Switch Debug Session' },
+    },
+    {
+      '<leader>dp',
+      function()
+        require('dap').pause()
+      end,
+      { desc = 'Pause current session' },
     },
   },
   config = function()
