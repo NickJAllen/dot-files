@@ -52,7 +52,17 @@ vim.keymap.set('n', '<leader>br', nick.utils.reload_unmodified_buffers, { desc =
 
 vim.keymap.set('n', '<leader>s.', nick.utils.open_directory_in_oil, { desc = 'Open directory in Oil' }) -- vim: ts=2 sts=2 sw=2 et
 
--- Automated tasks
+vim.keymap.set('n', '[e', function()
+  vim.diagnostic.goto_prev {
+    severity = vim.diagnostic.severity.ERROR,
+  }
+end, { desc = 'Go to previous diagnostic error' }) -- Automated tasks
+
+vim.keymap.set('n', ']e', function()
+  vim.diagnostic.goto_next {
+    severity = vim.diagnostic.severity.ERROR,
+  }
+end, { desc = 'Go to next diagnostic error' })
 
 vim.api.nvim_create_user_command('QuickfixItemDo', function(opts)
   if opts.args == '' then
