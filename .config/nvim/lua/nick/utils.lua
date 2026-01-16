@@ -494,6 +494,9 @@ local function get_random_colorscheme()
     'thorn',
     'minicyan',
     'gruvbox-material',
+    'material',
+    'material-darker',
+    'material-deep-ocean',
   }
 
   while true do
