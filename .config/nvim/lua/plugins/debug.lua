@@ -232,14 +232,14 @@ return {
     {
       '<leader>ds',
       switch_session,
-      { desc = 'Switch Debug Session' },
+      desc = 'Switch Debug Session',
     },
     {
       '<leader>dp',
       function()
         require('dap').pause()
       end,
-      { desc = 'Pause current session' },
+      desc = 'Pause current session',
     },
   },
   config = function()
