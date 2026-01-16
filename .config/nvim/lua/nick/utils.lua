@@ -493,6 +493,7 @@ local function get_random_colorscheme()
     'kanagawa',
     'thorn',
     'minicyan',
+    'gruvbox-material',
   }
 
   while true do
