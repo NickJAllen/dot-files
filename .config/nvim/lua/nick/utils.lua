@@ -497,6 +497,14 @@ local function get_random_colorscheme()
     'material',
     'material-darker',
     'material-deep-ocean',
+    'sonakai',
+    'nord',
+    'nordic',
+    'solarized-osaka',
+    'everforest',
+    'tokyodark',
+    'edge',
+    'bamboo',
   }
 
   while true do
