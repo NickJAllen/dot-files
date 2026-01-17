@@ -85,7 +85,7 @@ return {
       -- Some functions like `log` can take parameters
       vim.keymap.set('n', '<leader>jL', function()
         cmd.log {
-          revisions = "'all()'", -- equivalent to jj log -r ::
+          revisions = 'all()', -- equivalent to jj log -r ::
         }
       end, { desc = 'JJ log all' })
 
