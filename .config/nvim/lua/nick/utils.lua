@@ -497,7 +497,7 @@ local function get_random_colorscheme()
     'material',
     'material-darker',
     'material-deep-ocean',
-    'sonakai',
+    'sonokai',
     'nord',
     'nordic',
     'solarized-osaka',
