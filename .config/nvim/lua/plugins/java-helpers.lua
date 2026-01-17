@@ -5,12 +5,12 @@ return {
     cmd = 'JavaHelpersNewFile',
     opts = {},
     keys = {
-      { '<leader>jn', ':JavaHelpersNewFile<cr>', desc = 'New Java Type' },
-      { '<leader>jc', ':JavaHelpersNewFile Class<cr>', desc = 'New Java Class' },
-      { '<leader>ji', ':JavaHelpersNewFile Interface<cr>', desc = 'New Java Interface' },
-      { '<leader>ja', ':JavaHelpersNewFile Abstract Class<cr>', desc = 'New Abstract Java Class' },
-      { '<leader>jr', ':JavaHelpersNewFile Record<cr>', desc = 'New Java Record' },
-      { '<leader>je', ':JavaHelpersNewFile Enum<cr>', desc = 'New Java Enum' },
+      { '<leader>Jn', ':JavaHelpersNewFile<cr>', desc = 'New Java Type' },
+      { '<leader>Jc', ':JavaHelpersNewFile Class<cr>', desc = 'New Java Class' },
+      { '<leader>Ji', ':JavaHelpersNewFile Interface<cr>', desc = 'New Java Interface' },
+      { '<leader>Ja', ':JavaHelpersNewFile Abstract Class<cr>', desc = 'New Abstract Java Class' },
+      { '<leader>Jr', ':JavaHelpersNewFile Record<cr>', desc = 'New Java Record' },
+      { '<leader>Je', ':JavaHelpersNewFile Enum<cr>', desc = 'New Java Enum' },
     },
     dependencies = {
       { 'nvim-lua/plenary.nvim' },

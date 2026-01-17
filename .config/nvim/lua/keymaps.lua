@@ -35,9 +35,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = 'Copy to system clipboard' })
-vim.keymap.set({ 'n', 'x' }, '<leader>Y', '"+yg_', { desc = 'Copy to system clipboard' })
+vim.keymap.set({ 'n', 'x' }, '<leader>Y', '"+yg_', { desc = 'Copy line to system clipboard' })
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
-vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = 'Paste from system clipboard' })
+vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = 'Paste before from system clipboard' })
 
 local nick = require 'nick'
 
