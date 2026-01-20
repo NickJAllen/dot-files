@@ -5,6 +5,9 @@ if status is-interactive
 
     fzf --fish | source
 
+    bind ctrl-f fzf-file-widget
+    bind -M insert ctrl-f fzf-file-widget
+
     starship init fish | source
 
     switch (uname)
