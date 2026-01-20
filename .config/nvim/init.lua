@@ -97,6 +97,14 @@ vim.lsp.config('jdtls', {
   init_options = {
     bundles = find_jdtls_bundles(),
   },
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = {
+        -- This is needed for file system watching so that files changed on the file system and not inside neovim are reported to the language server
+        dynamicRegistration = true,
+      },
+    },
+  },
   settings = {
     java = {
       -- Custom eclipse.jdt.ls options go here
