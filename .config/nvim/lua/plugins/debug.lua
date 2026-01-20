@@ -55,6 +55,11 @@ local function switch_session()
   end)
 end
 
+local function toggle_breakpoint()
+  require('persistent-breakpoints.api').toggle_breakpoint()
+  -- require('dap').toggle_breakpoint()
+end
+
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -69,6 +74,7 @@ return {
     'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
     'leoluz/nvim-dap-go',
+    'Weissle/persistent-breakpoints.nvim',
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -166,7 +172,7 @@ return {
     {
       '<leader>db',
       function()
-        require('dap').toggle_breakpoint()
+        toggle_breakpoint()
       end,
       desc = 'Toggle Breakpoint',
     },
