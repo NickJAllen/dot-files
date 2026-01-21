@@ -24,6 +24,11 @@ local function toggle_debug_ui()
   end
 end
 
+local function toggle_breakpoint()
+  require('persistent-breakpoints.api').toggle_breakpoint()
+  -- require('dap').toggle_breakpoint()
+end
+
 local function get_breakpoint_condition(callback)
   vim.ui.input({
     prompt = 'Breakpoint Condition',
@@ -31,9 +36,20 @@ local function get_breakpoint_condition(callback)
 end
 
 local function set_conditional_breakpoint()
-  get_breakpoint_condition(function(condition)
-    require('dap').set_breakpoint(condition)
-  end)
+  require('persistent-breakpoints.api').set_conditional_breakpoint()
+  -- get_breakpoint_condition(function(condition)
+  --   require('dap').set_breakpoint(condition)
+  -- end)
+end
+
+local function set_log_point()
+  require('persistent-breakpoints.api').set_log_point()
+  -- local expression = vim.fn.input 'Enter log point expression: '
+  -- require('dap').set_breakpoint(nil, nil, expression)
+end
+
+local function clear_all_breakpoints()
+  require('persistent-breakpoints.api').clear_all_breakpoints()
 end
 
 local function switch_session()
@@ -53,11 +69,6 @@ local function switch_session()
       require('dap').set_session(sessions[choice.id])
     end
   end)
-end
-
-local function toggle_breakpoint()
-  require('persistent-breakpoints.api').toggle_breakpoint()
-  -- require('dap').toggle_breakpoint()
 end
 
 return {
@@ -178,11 +189,8 @@ return {
     },
     {
       '<leader>dm',
-      function()
-        local trace_massage = vim.fn.input 'Enter tracepoint expression: '
-        require('dap').set_breakpoint(nil, nil, trace_massage)
-      end,
-      desc = 'Set Tracepoint Message',
+      set_log_point,
+      desc = 'Set Log Point',
     },
     {
       '<leader>dr',
@@ -222,6 +230,11 @@ return {
     {
       '<leader>dB',
       set_conditional_breakpoint,
+      desc = 'Set Conditional Breakpoint',
+    },
+    {
+      '<leader>dx',
+      clear_all_breakpoints,
       desc = 'Set Conditional Breakpoint',
     },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
