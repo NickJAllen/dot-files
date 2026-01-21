@@ -235,7 +235,7 @@ return {
     {
       '<leader>dx',
       clear_all_breakpoints,
-      desc = 'Set Conditional Breakpoint',
+      desc = 'Clear All Breakpoints',
     },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     {
