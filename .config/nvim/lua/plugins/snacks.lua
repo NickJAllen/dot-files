@@ -79,49 +79,6 @@ return {
       end,
       desc = 'File Explorer',
     },
-    -- find
-    {
-      '<leader>fb',
-      function()
-        Snacks.picker.buffers()
-      end,
-      desc = 'Buffers',
-    },
-    {
-      '<leader>fc',
-      function()
-        Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
-      end,
-      desc = 'Find Config File',
-    },
-    {
-      '<leader>ff',
-      function()
-        Snacks.picker.files()
-      end,
-      desc = 'Find Files',
-    },
-    {
-      '<leader>fg',
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = 'Find Git Files',
-    },
-    {
-      '<leader>fp',
-      function()
-        Snacks.picker.projects()
-      end,
-      desc = 'Projects',
-    },
-    {
-      '<leader>fr',
-      function()
-        Snacks.picker.recent()
-      end,
-      desc = 'Recent',
-    },
     -- git
     {
       '<leader>gb',
@@ -173,6 +130,13 @@ return {
       desc = 'Git Log File',
     },
     -- Grep
+    {
+      '<leader>sr',
+      function()
+        Snacks.picker.recent()
+      end,
+      desc = 'Recent',
+    },
     {
       '<leader>sb',
       function()
@@ -355,11 +319,11 @@ return {
       desc = 'Undo History',
     },
     {
-      '<leader>uc',
+      '<leader>st',
       function()
         Snacks.picker.colorschemes()
       end,
-      desc = 'Colorschemes',
+      desc = 'Themes',
     },
     -- LSP
     {
