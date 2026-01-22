@@ -52,6 +52,10 @@ local function clear_all_breakpoints()
   require('persistent-breakpoints.api').clear_all_breakpoints()
 end
 
+local function add_watch()
+  require('dap-view').add_expr(nil, false)
+end
+
 local function switch_session()
   local sessions = require('dap').sessions()
   local session_list = {}
@@ -188,9 +192,19 @@ return {
       desc = 'Toggle Breakpoint',
     },
     {
+      '<leader>dB',
+      set_conditional_breakpoint,
+      desc = 'Set Conditional Breakpoint',
+    },
+    {
       '<leader>dm',
       set_log_point,
       desc = 'Set Log Point',
+    },
+    {
+      '<leader>dw',
+      add_watch,
+      desc = 'Add Watch',
     },
     {
       '<leader>dr',
@@ -226,11 +240,6 @@ return {
         require('dap').down()
       end,
       desc = 'Go Down Stack',
-    },
-    {
-      '<leader>dB',
-      set_conditional_breakpoint,
-      desc = 'Set Conditional Breakpoint',
     },
     {
       '<leader>dx',
