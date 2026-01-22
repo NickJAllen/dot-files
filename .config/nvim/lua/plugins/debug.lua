@@ -75,6 +75,35 @@ local function switch_session()
   end)
 end
 
+local function show_view(name)
+  require('dap-view').open()
+  require('dap-view').jump_to_view(name)
+end
+
+local function show_watches()
+  show_view 'watches'
+end
+
+local function show_scopes()
+  show_view 'scopes'
+end
+
+local function show_exceptions()
+  show_view 'exceptions'
+end
+
+local function show_breakpoints()
+  show_view 'breakpoints'
+end
+
+local function show_threads()
+  show_view 'threads'
+end
+
+local function show_repl()
+  show_view 'repl'
+end
+
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
@@ -207,6 +236,11 @@ return {
       desc = 'Add Watch',
     },
     {
+      '<leader>dx',
+      clear_all_breakpoints,
+      desc = 'Clear All Breakpoints',
+    },
+    {
       '<leader>dr',
       function()
         require('dap').restart_frame()
@@ -241,11 +275,6 @@ return {
       end,
       desc = 'Go Down Stack',
     },
-    {
-      '<leader>dx',
-      clear_all_breakpoints,
-      desc = 'Clear All Breakpoints',
-    },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     {
       '<leader>du',
@@ -268,6 +297,36 @@ return {
         require('dap').pause()
       end,
       desc = 'Pause current session',
+    },
+    {
+      '<leader>dvw',
+      show_watches,
+      desc = 'Watches',
+    },
+    {
+      '<leader>dvs',
+      show_scopes,
+      desc = 'Scopes',
+    },
+    {
+      '<leader>dve',
+      show_exceptions,
+      desc = 'Exceptions',
+    },
+    {
+      '<leader>dvb',
+      show_breakpoints,
+      desc = 'Breakpoints',
+    },
+    {
+      '<leader>dvt',
+      show_threads,
+      desc = 'Threads',
+    },
+    {
+      '<leader>dvr',
+      show_repl,
+      desc = 'REPL',
     },
   },
   config = function()
