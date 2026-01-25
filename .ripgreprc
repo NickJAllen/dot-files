@@ -1,0 +1,5 @@
+--type-clear
+java
+
+--type-add
+java:*.java
