@@ -505,6 +505,7 @@ local function get_random_colorscheme()
     'tokyodark',
     'edge',
     'bamboo',
+    'codedark',
   }
 
   while true do
