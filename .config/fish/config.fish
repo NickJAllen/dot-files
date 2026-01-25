@@ -10,8 +10,12 @@ if status is-interactive
 
     starship init fish | source
 
+    set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
+
     switch (uname)
         case Linux
             source ~/.config/fish/linux-config.fish
+        case Darwin
+            source ~/.config/fish/macos-config.fish
     end
 end
