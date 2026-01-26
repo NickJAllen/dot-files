@@ -10,6 +10,7 @@ if status is-interactive
 
     starship init fish | source
 
+    fish_add_path $HOME/bin
     set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
 
     switch (uname)
