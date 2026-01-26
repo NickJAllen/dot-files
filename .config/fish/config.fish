@@ -12,6 +12,7 @@ if status is-interactive
 
     fish_add_path $HOME/bin
     set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
+    set -gx EDITOR nvim
 
     switch (uname)
         case Linux
