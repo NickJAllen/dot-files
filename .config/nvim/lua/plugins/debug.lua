@@ -55,6 +55,55 @@ end
 local function add_watch()
   require('dap-view').add_expr(nil, false)
 end
+---
+---@param dir "next"|"prev"
+local function goto_breakpoint(dir)
+  local breakpoints = require('dap.breakpoints').get()
+  if #breakpoints == 0 then
+    vim.notify('No breakpoints set', vim.log.levels.WARN)
+    return
+  end
+  local points = {}
+  for bufnr, buffer in pairs(breakpoints) do
+    for _, point in ipairs(buffer) do
+      table.insert(points, { bufnr = bufnr, line = point.line })
+    end
+  end
+
+  local current = {
+    bufnr = vim.api.nvim_get_current_buf(),
+    line = vim.api.nvim_win_get_cursor(0)[1],
+  }
+
+  local nextPoint
+  for i = 1, #points do
+    local isAtBreakpointI = points[i].bufnr == current.bufnr and points[i].line == current.line
+    if isAtBreakpointI then
+      local nextIdx = dir == 'next' and i + 1 or i - 1
+      if nextIdx > #points then
+        nextIdx = 1
+      end
+      if nextIdx == 0 then
+        nextIdx = #points
+      end
+      nextPoint = points[nextIdx]
+      break
+    end
+  end
+  if not nextPoint then
+    nextPoint = points[1]
+  end
+
+  vim.cmd(('buffer +%s %s'):format(nextPoint.line, nextPoint.bufnr))
+end
+
+local function goto_next_breakpoint()
+  goto_breakpoint 'next'
+end
+
+local function goto_prev_breakpoint()
+  goto_breakpoint 'prev'
+end
 
 local function switch_session()
   local sessions = require('dap').sessions()
@@ -239,6 +288,16 @@ return {
       '<leader>dx',
       clear_all_breakpoints,
       desc = 'Clear All Breakpoints',
+    },
+    {
+      ']p',
+      goto_next_breakpoint,
+      desc = 'Go To Next Breakpoint',
+    },
+    {
+      '[p',
+      goto_prev_breakpoint,
+      desc = 'Go To Prev Breakpoint',
     },
     {
       '<leader>dr',
