@@ -506,6 +506,8 @@ local function get_random_colorscheme()
     'edge',
     'bamboo',
     'codedark',
+    'melange',
+    'nightfly',
   }
 
   while true do
