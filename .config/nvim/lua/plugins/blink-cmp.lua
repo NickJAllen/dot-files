@@ -99,7 +99,7 @@ return {
             return { 'dap', 'snippets', 'lazydev' }
           end
 
-          return { 'lsp', 'path', 'snippets', 'lazydev' }
+          return { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' }
         end,
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
