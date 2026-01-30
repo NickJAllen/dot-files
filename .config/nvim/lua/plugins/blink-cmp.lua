@@ -96,7 +96,7 @@ return {
       sources = {
         default = function()
           if is_dap_buffer() then
-            return { 'dap', 'snippets', 'lazydev' }
+            return { 'dap', 'snippets', 'lazydev', 'buffer' }
           end
 
           return { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' }
