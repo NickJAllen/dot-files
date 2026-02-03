@@ -13,7 +13,7 @@ vim.g.snacks_animate = true
 vim.g.snacks_indent = true
 
 -- Allow loading directory specific configurations
-vim.o.exrc = true
+vim.opt.exrc = true
 
 -- Disable swap file as this was annoying me
 vim.opt.swapfile = false
@@ -27,7 +27,7 @@ vim.opt.fillchars = {
   eob = ' ',
 }
 
-vim.o.background = 'dark'
+vim.opt.background = 'dark'
 
 -- [[ Setting options ]]
 require 'options'
