@@ -9,8 +9,6 @@ config.font_size = 11
 config.color_scheme = "Tokyo Night"
 -- config.line_height = 0.99
 
-config.hide_tab_bar_if_only_one_tab = true
-
 config.native_macos_fullscreen_mode = false
 
 config.window_decorations = "RESIZE"
@@ -20,6 +18,9 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+
+config.hide_tab_bar_if_only_one_tab = true
+config.enable_tab_bar = false
 
 wezterm.on("toggle-tabbar", function(window, _)
 	local overrides = window:get_config_overrides() or {}
