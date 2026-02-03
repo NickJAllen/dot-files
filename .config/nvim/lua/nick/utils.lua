@@ -509,6 +509,7 @@ local function get_random_colorscheme()
     'melange',
     'nightfly',
     'hybrid',
+    'neosolarized',
   }
 
   while true do
