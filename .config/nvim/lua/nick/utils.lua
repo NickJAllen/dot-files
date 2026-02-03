@@ -508,6 +508,7 @@ local function get_random_colorscheme()
     'codedark',
     'melange',
     'nightfly',
+    'hybrid',
   }
 
   while true do
