@@ -21,4 +21,20 @@ config.window_padding = {
 	bottom = 0,
 }
 
+wezterm.on("toggle-tabbar", function(window, _)
+	local overrides = window:get_config_overrides() or {}
+	if overrides.enable_tab_bar == false then
+		wezterm.log_info("tab bar shown")
+		overrides.enable_tab_bar = true
+	else
+		wezterm.log_info("tab bar hidden")
+		overrides.enable_tab_bar = false
+	end
+	window:set_config_overrides(overrides)
+end)
+
+config.keys = {
+	{ key = "F", mods = "CTRL", action = wezterm.action.EmitEvent("toggle-tabbar") },
+}
+
 return config
