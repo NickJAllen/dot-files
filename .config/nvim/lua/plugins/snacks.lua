@@ -390,5 +390,12 @@ return {
       end,
       desc = 'LSP Workspace Symbols',
     },
+    {
+      '<leader>us',
+      function()
+        Snacks.toggle.scroll():toggle()
+      end,
+      desc = 'Toggle Smooth Scolling',
+    },
   },
 }
