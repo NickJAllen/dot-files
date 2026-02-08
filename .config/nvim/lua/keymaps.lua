@@ -46,6 +46,7 @@ local nick = require 'nick'
 vim.keymap.set('n', '<leader>bb', ':buffer #<CR>', { desc = 'Back To Previous Buffer' })
 vim.keymap.set('n', '<leader>bq', nick.utils.delete_current_buffer, { desc = 'Close Buffer' })
 vim.keymap.set('n', '<leader>bd', nick.utils.delete_current_buffer_and_file, { desc = 'Delete Buffer and File' })
+vim.keymap.set('n', '<leader>bn', ':enew<CR>', { desc = 'New Buffer' })
 vim.keymap.set('n', '<leader>bo', nick.utils.delete_other_unmodified_buffers, { desc = 'Close Other Unmodified Buffers' })
 vim.keymap.set('n', '<leader>bm', nick.utils.open_messages, { desc = 'Open Messages' })
 vim.keymap.set('n', '<leader>br', nick.utils.reload_unmodified_buffers, { desc = 'Reload Unmodified Buffers' })
