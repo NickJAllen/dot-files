@@ -52,7 +52,7 @@ end
 -- Saves all files
 function M.save_all()
   log.trace 'Saving all files'
-  vim.cmd 'wall'
+  pcall(vim.cmd, 'wall')
   make_jj_snapshot()
 end
 
