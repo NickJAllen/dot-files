@@ -2,7 +2,7 @@ return {
   {
     'NickJAllen/java-helpers.nvim',
     dev = true,
-    cmd = { 'JavaHelpersNewFile', 'JavaHelpersGoToStackTrace' },
+    cmd = { 'JavaHelpersNewFile', 'JavaHelpersGoToStackTraceLine', 'JavaHelpersGoUpStackTrace', 'JavaHelpersGoDownStackTrace' },
     opts = {},
     keys = {
       { '<leader>Jn', ':JavaHelpersNewFile<cr>', desc = 'New Java Type' },
@@ -11,7 +11,9 @@ return {
       { '<leader>Ja', ':JavaHelpersNewFile Abstract Class<cr>', desc = 'New Abstract Java Class' },
       { '<leader>Jr', ':JavaHelpersNewFile Record<cr>', desc = 'New Java Record' },
       { '<leader>Je', ':JavaHelpersNewFile Enum<cr>', desc = 'New Java Enum' },
-      { '<leader>Js', ':JavaHelpersGoToStackTrace<cr>', desc = 'Go to Java stack trace line' },
+      { '<leader>Js', ':JavaHelpersGoToStackTraceLine<cr>', desc = 'Go to Java stack trace line' },
+      { '[j', ':JavaHelpersGoUpStackTrace<cr>', desc = 'Go up Java stack trace' },
+      { ']j', ':JavaHelpersGoDownStackTrace<cr>', desc = 'Go down Java stack trace' },
     },
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
