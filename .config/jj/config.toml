@@ -1,0 +1,9 @@
+[user]
+name = "Nicholas Allen"
+email = "radicalnick@gmail.com"
+
+[ui]
+editor = "nvim"
+
+[revsets]
+log = 'present(@) | ancestors(immutable_heads().., 15) | trunk()'
