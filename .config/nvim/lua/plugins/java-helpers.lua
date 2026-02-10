@@ -1,8 +1,15 @@
 return {
   {
     'NickJAllen/java-helpers.nvim',
-    -- dev = true,
-    cmd = { 'JavaHelpersNewFile', 'JavaHelpersGoToStackTraceLine', 'JavaHelpersGoUpStackTrace', 'JavaHelpersGoDownStackTrace' },
+    dev = true,
+    cmd = {
+      'JavaHelpersNewFile',
+      'JavaHelpersGoToStackTraceLine',
+      'JavaHelpersGoUpStackTrace',
+      'JavaHelpersGoDownStackTrace',
+      'JavaHelpersGoToBottomOfStackTrace',
+      'JavaHelpersGoToTopOfStackTrace',
+    },
     opts = {},
     keys = {
       { '<leader>Jn', ':JavaHelpersNewFile<cr>', desc = 'New Java Type' },
@@ -14,6 +21,8 @@ return {
       { '<leader>Js', ':JavaHelpersGoToStackTraceLine<cr>', desc = 'Go to Java stack trace line' },
       { '[j', ':JavaHelpersGoUpStackTrace<cr>', desc = 'Go up Java stack trace' },
       { ']j', ':JavaHelpersGoDownStackTrace<cr>', desc = 'Go down Java stack trace' },
+      { '<leader>[j', ':JavaHelpersGoToTopOfStackTrace<cr>', desc = 'Go to top of Java stack trace' },
+      { '<leader>]j', ':JavaHelpersGoToBottomOfStackTrace<cr>', desc = 'Go to bottom of Java stack trace' },
     },
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
