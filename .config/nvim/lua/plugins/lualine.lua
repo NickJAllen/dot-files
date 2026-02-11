@@ -1,3 +1,19 @@
+local function macro_status()
+  local reg = vim.fn.reg_recording()
+
+  if reg ~= '' then
+    return '🔴 Recording @' .. reg
+  end
+
+  return ''
+end
+
+vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
+  callback = function()
+    require('lualine').refresh()
+  end,
+})
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -38,7 +54,15 @@ return {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = {
+          'branch',
+          'diff',
+          'diagnostics',
+          {
+            macro_status,
+            color = { fg = '#ff9e64', gui = 'bold' },
+          },
+        },
         lualine_c = {
           {
             'filename',
