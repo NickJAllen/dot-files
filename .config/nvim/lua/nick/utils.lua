@@ -492,7 +492,7 @@ local function get_random_colorscheme()
     'tokyonight-night',
     'kanagawa',
     'thorn',
-    'minicyan',
+    -- 'minicyan',
     'gruvbox-material',
     'material',
     'material-darker',

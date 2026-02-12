@@ -86,7 +86,9 @@ end, { desc = 'Cancel automated actions' })
 
 -- Utilities
 
-vim.keymap.set('n', '<leader>ur', nick.utils.choose_random_colorscheme, { desc = 'Choose random colorscheme' })
+vim.keymap.set('n', '<leader>ur', nick.utils.choose_random_colorscheme, { desc = 'Choose Random Colorscheme' })
+vim.keymap.set('n', '<leader>ul', ':Lazy<CR>', { desc = 'Show Lazy Plug-in Manager' })
+vim.keymap.set('n', '<leader>um', ':Mason<CR>', { desc = 'Show Lazy Plug-in Manager' })
 
 -- Mercurial
 
