@@ -55,6 +55,11 @@ end
 local function add_watch()
   require('dap-view').add_expr(nil, false)
 end
+
+local function inspect_value()
+  require('dap.ui.widgets').hover()
+end
+
 ---
 ---@param dir "next"|"prev"
 local function goto_breakpoint(dir)
@@ -125,7 +130,6 @@ local function switch_session()
 end
 
 local function show_view(name)
-  require('dap-view').open()
   require('dap-view').jump_to_view(name)
 end
 
@@ -283,6 +287,11 @@ return {
       '<leader>dw',
       add_watch,
       desc = 'Add Watch',
+    },
+    {
+      '<leader>dI',
+      inspect_value,
+      desc = 'Inspect Value at cursor',
     },
     {
       '<leader>dx',
