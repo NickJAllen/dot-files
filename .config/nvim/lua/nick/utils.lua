@@ -148,18 +148,13 @@ function M.delete_current_buffer_and_file()
   M.delete_buffer_and_file(vim.api.nvim_get_current_buf())
 end
 
-function M.open_directory_in_oil()
+---@param name string
+---@param command string[]
+---@param callback function(line : string)
+local function select_command_output_line(name, command, callback)
   local picker = require 'snacks.picker'
 
-  local find_command = {
-    'fd',
-    '--type',
-    'd',
-    '--color',
-    'never',
-  }
-
-  vim.fn.jobstart(find_command, {
+  vim.fn.jobstart(command, {
     stdout_buffered = true,
     on_stdout = function(_, data)
       if data then
@@ -174,18 +169,47 @@ function M.open_directory_in_oil()
 
         ---@module 'snacks'
         picker.pick {
-          source = 'directories',
+          source = name,
           items = items,
           layout = { preset = 'select' },
           format = 'text',
           confirm = function(p, item)
             p:close()
-            vim.cmd('Oil ' .. item.text)
+            callback(item.text)
           end,
         }
       end
     end,
   })
+end
+
+function M.open_directory_in_oil()
+  local find_command = {
+    'fd',
+    '--type',
+    'd',
+    '--color',
+    'never',
+  }
+
+  select_command_output_line('directories', find_command, function(selected)
+    vim.cmd('Oil ' .. selected)
+  end)
+end
+
+---@parama callback function(process_id : integer)
+function M.select_process_id(callback)
+  local command = { 'ps', '-ef' }
+
+  select_command_output_line('process', command, function(selected)
+    local pid = selected:match '^%s*%S+%s+(%d+)'
+
+    if not pid then
+      return
+    end
+
+    callback(tonumber(pid))
+  end)
 end
 
 ---@return string[]
