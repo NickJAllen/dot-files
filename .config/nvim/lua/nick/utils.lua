@@ -183,6 +183,19 @@ local function select_command_output_line(name, command, callback)
   })
 end
 
+---@param name string
+---@param command string[]
+---@return string|nil selected_line
+function M.await_select_command_output_line(name, command)
+  local co = coroutine.running()
+
+  M.select_command_output_line(name, command, function(line)
+    local ok, error = coroutine.resume(co, line)
+  end)
+
+  return coroutine.yield()
+end
+
 function M.open_directory_in_oil()
   local find_command = {
     'fd',
@@ -197,19 +210,36 @@ function M.open_directory_in_oil()
   end)
 end
 
----@parama callback function(process_id : integer)
+---@param ps_line string
+---@return integer|nil pid
+local function get_pid(ps_line)
+  return ps_line:match '^%s*%S+%s+(%d+)'
+end
+
+---@parama callback function(process_id : integer|nil)
 function M.select_process_id(callback)
   local command = { 'ps', '-ef' }
 
   select_command_output_line('process', command, function(selected)
-    local pid = selected:match '^%s*%S+%s+(%d+)'
+    local pid = get_pid(selected)
 
     if not pid then
-      return
+      callback(nil)
+    else
+      callback(tonumber(pid))
     end
-
-    callback(tonumber(pid))
   end)
+end
+
+---@return integer|nil pid
+function M.await_select_process_id()
+  local co = coroutine.running()
+
+  M.select_process_id(function(pid)
+    coroutine.resume(co, pid)
+  end)
+
+  return coroutine.yield()
 end
 
 ---@return string[]
@@ -510,6 +540,7 @@ end
 local function get_random_colorscheme()
   local schemes = {
     'duskfox',
+
     'nightfox',
     'onedark',
     'catppuccin-mocha',
