@@ -540,14 +540,12 @@ end
 local function get_random_colorscheme()
   local schemes = {
     'duskfox',
-
     'nightfox',
     'onedark',
     'catppuccin-mocha',
     'tokyonight-night',
     'kanagawa',
     'thorn',
-    -- 'minicyan',
     'gruvbox-material',
     'material',
     'material-darker',
@@ -555,7 +553,6 @@ local function get_random_colorscheme()
     'sonokai',
     'nord',
     'nordic',
-    'solarized-osaka',
     'everforest',
     'tokyodark',
     'edge',
@@ -564,7 +561,6 @@ local function get_random_colorscheme()
     'melange',
     'nightfly',
     'hybrid',
-    'neosolarized',
   }
 
   while true do
