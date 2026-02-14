@@ -1,9 +1,10 @@
 return {
   {
     'NickJAllen/java-helpers.nvim',
-    -- dev = true,
+    dev = true,
     cmd = {
       'JavaHelpersNewFile',
+      'JavaHelpersPickStackTraceLine',
       'JavaHelpersGoToStackTraceLine',
       'JavaHelpersGoUpStackTrace',
       'JavaHelpersGoDownStackTrace',
@@ -20,6 +21,7 @@ return {
       { '<leader>Jr', ':JavaHelpersNewFile Record<cr>', desc = 'New Java Record' },
       { '<leader>Je', ':JavaHelpersNewFile Enum<cr>', desc = 'New Java Enum' },
       { '<leader>Js', ':JavaHelpersGoToStackTraceLine<cr>', desc = 'Go to Java stack trace line' },
+      { '<leader>sj', ':JavaHelpersPickStackTraceLine<cr>', desc = 'Pick Java stack trace line' },
       { '[j', ':JavaHelpersGoUpStackTrace<cr>', desc = 'Go up Java stack trace' },
       { ']j', ':JavaHelpersGoDownStackTrace<cr>', desc = 'Go down Java stack trace' },
       { '<leader>[j', ':JavaHelpersGoToTopOfStackTrace<cr>', desc = 'Go to top of Java stack trace' },
