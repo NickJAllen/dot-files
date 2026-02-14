@@ -9,6 +9,7 @@ return {
       'JavaHelpersGoDownStackTrace',
       'JavaHelpersGoToBottomOfStackTrace',
       'JavaHelpersGoToTopOfStackTrace',
+      'JavaHelpersSendStackTraceToQuickfix',
     },
     opts = {},
     keys = {
@@ -23,6 +24,7 @@ return {
       { ']j', ':JavaHelpersGoDownStackTrace<cr>', desc = 'Go down Java stack trace' },
       { '<leader>[j', ':JavaHelpersGoToTopOfStackTrace<cr>', desc = 'Go to top of Java stack trace' },
       { '<leader>]j', ':JavaHelpersGoToBottomOfStackTrace<cr>', desc = 'Go to bottom of Java stack trace' },
+      { '<leader>Jq', ':JavaHelpersSendStackTraceToQuickfix<cr>', desc = 'Send Java stack trace to quickfix list' },
     },
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
