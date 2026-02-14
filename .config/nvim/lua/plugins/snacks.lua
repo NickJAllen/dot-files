@@ -24,10 +24,15 @@ return {
         },
       },
     },
+    explorer = {
+      enabled = true,
+    },
     input = {
       enabled = true,
     },
-    animate = { enabled = true },
+    animate = {
+      enabled = true,
+    },
     indent = {
       enabled = true,
     },
