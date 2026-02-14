@@ -6,3 +6,8 @@ disabled = false
 [hg_branch]
 format = 'on [🌱 $branch](bold purple) '
 disabled = false
+
+[custom.jj]
+when = "jj-starship detect"
+shell = ["jj-starship"]
+format = "$output "
