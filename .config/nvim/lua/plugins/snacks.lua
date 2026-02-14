@@ -17,11 +17,6 @@ return {
           ignored = true,
           exclude = excluded_files,
         },
-        files = {
-          hidden = true,
-          ignored = true,
-          exclude = excluded_files,
-        },
       },
     },
     explorer = {
