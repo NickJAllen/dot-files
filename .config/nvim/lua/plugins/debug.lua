@@ -472,5 +472,18 @@ return {
         args = { '--port', '${port}' },
       },
     }
+
+    dap.providers.configs['nick'] = function(buffnr)
+      return {
+        {
+          name = 'Attach to Process',
+          type = 'codelldb',
+          request = 'attach',
+          pid = function()
+            return require('nick.utils').await_select_process_id()
+          end,
+        },
+      }
+    end
   end,
 }
