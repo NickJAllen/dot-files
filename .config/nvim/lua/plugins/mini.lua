@@ -19,9 +19,24 @@ return {
 
       require('mini.test').setup()
 
+      require('mini.files').setup {
+        mappings = {
+          go_in = '<CR>',
+        },
+      }
+
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
+    keys = {
+      {
+        '<leader>f',
+        function()
+          MiniFiles.open()
+        end,
+        desc = 'Open mini file explorer',
+      },
+    },
   },
 }
 -- vim: ts=2 sts=2 sw=2 et

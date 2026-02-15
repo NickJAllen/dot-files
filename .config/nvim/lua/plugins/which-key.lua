@@ -65,7 +65,6 @@ return {
         { '<leader>c', group = 'Code' },
         { '<leader>d', group = 'Debug' },
         { '<leader>dv', group = 'Show Debug View' },
-        { '<leader>f', group = 'Find' },
         { '<leader>g', group = 'Git' },
         { '<leader>j', group = 'Jujutsu' },
         { '<leader>J', group = 'Java' },
