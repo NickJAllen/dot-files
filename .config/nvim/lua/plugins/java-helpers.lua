@@ -34,7 +34,10 @@ return {
       { '<leader>Jq', ':JavaHelpersSendStackTraceToQuickfix<cr>', desc = 'Send Java stack trace to quickfix list' },
     },
     dependencies = {
-      { 'nvim-lua/plenary.nvim' },
+      'nvim-lua/plenary.nvim',
+
+      -- This is only needed if you want to use the JavaHelpersPickStackTraceLine command (but highly recommended)
+      'folke/snacks.nvim',
     },
   },
 }
