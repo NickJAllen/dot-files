@@ -11,6 +11,7 @@ return {
       'JavaHelpersGoToBottomOfStackTrace',
       'JavaHelpersGoToTopOfStackTrace',
       'JavaHelpersSendStackTraceToQuickfix',
+      'JavaHelpersSetObfuscationFile',
     },
     opts = {},
     keys = {
@@ -32,6 +33,7 @@ return {
       { '<leader>Jt', ':JavaHelpersGoToTopOfStackTrace<cr>', desc = 'Go to top of Java stack trace' },
       { '<leader>Jb', ':JavaHelpersGoToBottomOfStackTrace<cr>', desc = 'Go to bottom of Java stack trace' },
       { '<leader>Jq', ':JavaHelpersSendStackTraceToQuickfix<cr>', desc = 'Send Java stack trace to quickfix list' },
+      { '<leader>Jo', ':JavaHelpersSetObfuscationFile<cr>', desc = 'Set obfuscation mapping file' },
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
