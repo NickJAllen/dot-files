@@ -21,7 +21,7 @@ return {
 
       require('mini.files').setup {
         mappings = {
-          go_in = '<CR>',
+          -- go_in = '<CR>',
         },
       }
 
@@ -32,9 +32,16 @@ return {
       {
         '<leader>f',
         function()
-          MiniFiles.open()
+          MiniFiles.open(vim.api.nvim_buf_get_name(0))
         end,
         desc = 'Open mini file explorer',
+      },
+      {
+        '<leader>F',
+        function()
+          MiniFiles.open()
+        end,
+        desc = 'Open mini file explorer in project root',
       },
     },
   },
