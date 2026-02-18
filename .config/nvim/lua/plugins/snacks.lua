@@ -131,13 +131,6 @@ return {
     },
     -- Grep
     {
-      '<leader>sr',
-      function()
-        Snacks.picker.recent()
-      end,
-      desc = 'Recent',
-    },
-    {
       '<leader>sb',
       function()
         Snacks.picker.lines()
@@ -305,7 +298,7 @@ return {
       desc = 'Quickfix List',
     },
     {
-      '<leader>sR',
+      '<leader>sr',
       function()
         Snacks.picker.resume()
       end,
