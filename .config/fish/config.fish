@@ -8,6 +8,11 @@ if status is-interactive
     bind ctrl-f fzf-file-widget
     bind -M insert ctrl-f fzf-file-widget
 
+    fish_vi_key_bindings
+    set -g fish_cursor_default block
+    set -g fish_cursor_insert line
+    set -g fish_cursor_replace_one underscore
+
     starship init fish | source
 
     fish_add_path $HOME/bin
