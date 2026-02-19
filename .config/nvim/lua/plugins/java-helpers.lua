@@ -11,9 +11,31 @@ return {
       'JavaHelpersGoToBottomOfStackTrace',
       'JavaHelpersGoToTopOfStackTrace',
       'JavaHelpersSendStackTraceToQuickfix',
-      'JavaHelpersSetObfuscationFile',
+      'JavaHelpersDeobfuscate',
+      'JavaHelpersSelectObfuscationFile',
     },
-    opts = {},
+
+    ---@type JavaHelpers.Config
+    opts = {
+      ---@type JavaHelpers.NewFileConfig
+      new_file = {
+        ---Each template has a name and some template source code.
+        ---${package_decl} and ${name} will be replaced with the package declaration and name for the Java type being created.
+        ---If ${pos} is provided then the cursor will be positioned there ready to type.
+        templates = {},
+
+        ---Defines patters to recognize Java source directories in order to determine the package name.
+        java_source_dirs = { 'src/main/java', 'src/test/java', 'src' },
+
+        ---If true then newly created Java files will be formatted
+        should_format = true,
+      },
+
+      ---@type JavaHelpers.StackTraceConfig
+      stack_trace = {
+        obfuscation_mappings_dir = vim.uv.os_homedir() .. '/.obfuscation',
+      },
+    },
     keys = {
       -- New file creation
       { '<leader>Jn', ':JavaHelpersNewFile<cr>', desc = 'New Java Type' },
@@ -33,7 +55,9 @@ return {
       { '<leader>Jt', ':JavaHelpersGoToTopOfStackTrace<cr>', desc = 'Go to top of Java stack trace' },
       { '<leader>Jb', ':JavaHelpersGoToBottomOfStackTrace<cr>', desc = 'Go to bottom of Java stack trace' },
       { '<leader>Jq', ':JavaHelpersSendStackTraceToQuickfix<cr>', desc = 'Send Java stack trace to quickfix list' },
-      { '<leader>Jo', ':JavaHelpersSetObfuscationFile<cr>', desc = 'Set obfuscation mapping file' },
+      { '<leader>Jd', ':JavaHelpersDeobfuscate<cr>', desc = 'Deofuscate Java stack trace' },
+      { '<leader>JD', ':JavaHelpersDeobfuscate +<cr>', desc = 'Deofuscate Java stack trace on Clipboard' },
+      { '<leader>Jo', ':JavaHelpersSelectObfuscationFile<cr>', desc = 'Select obfuscation file' },
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
