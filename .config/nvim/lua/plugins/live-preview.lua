@@ -8,6 +8,6 @@ return {
     'folke/snacks.nvim',
   },
   keys = {
-    { '<leader>up', ':LivePreview start<CR>', desc = 'Start live preview in browser' },
+    { '<leader>Up', ':LivePreview start<CR>', desc = 'Start live preview in browser' },
   },
 }

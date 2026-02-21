@@ -72,7 +72,7 @@ return {
         { '<leader>o', group = 'Overseer' },
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
-        { '<leader>u', group = 'Utility' },
+        { '<leader>U', group = 'Utility' },
         { '<leader>v', group = 'Version Control' },
       },
     },

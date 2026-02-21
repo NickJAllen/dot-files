@@ -11,6 +11,6 @@ return {
     }
   end,
   keys = {
-    { '<leader>us', ':GrugFar<CR>', desc = 'Search and Replace' },
+    { '<leader>Us', ':GrugFar<CR>', desc = 'Search and Replace' },
   },
 }
