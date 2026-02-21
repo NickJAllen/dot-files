@@ -20,6 +20,7 @@
   "grug-far.nvim": { "branch": "main", "commit": "275dbedc96e61a6b8d1dfb28ba51586ddd233dcf" },
   "gruvbox-material": { "branch": "master", "commit": "790afe9dd085aa04eccd1da3626c5fa05c620e53" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
+  "harpoon": { "branch": "harpoon2", "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5" },
   "helix-nvim": { "branch": "main", "commit": "ede86729a61eee3247cfa1b2b61ad78e4831084a" },
   "hybrid.nvim": { "branch": "master", "commit": "bd52073c4b2e357be0c5ad0d3bd0d07ca48773f7" },
   "jj.nvim": { "branch": "main", "commit": "86d15cecec172f343c22a70c7e4fa5a052d34244" },
