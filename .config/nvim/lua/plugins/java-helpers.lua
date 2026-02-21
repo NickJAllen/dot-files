@@ -10,14 +10,16 @@ return {
       'JavaHelpersGoDownStackTrace',
       'JavaHelpersGoToBottomOfStackTrace',
       'JavaHelpersGoToTopOfStackTrace',
+      'JavaHelpersGoToNextStackTrace',
+      'JavaHelpersGoToPrevStackTrace',
       'JavaHelpersSendStackTraceToQuickfix',
       'JavaHelpersDeobfuscate',
       'JavaHelpersSelectObfuscationFile',
+      'JavaHelpersForgetObfuscationFile',
     },
 
     ---@type JavaHelpers.Config
     opts = {
-      ---@type JavaHelpers.NewFileConfig
       new_file = {
         ---Each template has a name and some template source code.
         ---${package_decl} and ${name} will be replaced with the package declaration and name for the Java type being created.
@@ -31,8 +33,11 @@ return {
         should_format = true,
       },
 
-      ---@type JavaHelpers.StackTraceConfig
       stack_trace = {
+        --Command that is used to deobfuscate stack traces
+        deobfuscate_command = 'retrace',
+
+        --Directory that will be used to select an obfuscation mapping file, if nil or empty the current directory will be used
         obfuscation_mappings_dir = vim.uv.os_homedir() .. '/.obfuscation',
       },
     },
@@ -52,6 +57,8 @@ return {
       { '<leader>JP', ':JavaHelpersPickStackTraceLine +<cr>', desc = 'Pick Java stack trace line from Clipboard' },
       { '[j', ':JavaHelpersGoUpStackTrace<cr>', desc = 'Go up Java stack trace' },
       { ']j', ':JavaHelpersGoDownStackTrace<cr>', desc = 'Go down Java stack trace' },
+      { '[J', ':JavaHelpersGoToPrevStackTrace<cr>', desc = 'Go to previous Java stack trace' },
+      { ']J', ':JavaHelpersGoToNextStackTrace<cr>', desc = 'Go to next Java stack trace' },
       { '<leader>Jt', ':JavaHelpersGoToTopOfStackTrace<cr>', desc = 'Go to top of Java stack trace' },
       { '<leader>Jb', ':JavaHelpersGoToBottomOfStackTrace<cr>', desc = 'Go to bottom of Java stack trace' },
       { '<leader>Jq', ':JavaHelpersSendStackTraceToQuickfix<cr>', desc = 'Send Java stack trace to quickfix list' },
@@ -62,7 +69,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
 
-      -- This is only needed if you want to use the JavaHelpersPickStackTraceLine command (but highly recommended)
+      -- This is only needed if you want to use the JavaHelpersPickStackTraceLine or JavaHelpersSelectObfuscationFile commands (but highly recommended)
       'folke/snacks.nvim',
     },
   },
