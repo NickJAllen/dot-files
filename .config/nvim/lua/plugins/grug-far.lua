@@ -10,4 +10,7 @@ return {
       -- there are no required options atm
     }
   end,
+  keys = {
+    { '<leader>us', ':GrugFar<CR>', desc = 'Search and Replace' },
+  },
 }

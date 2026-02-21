@@ -384,7 +384,7 @@ return {
       desc = 'LSP Workspace Symbols',
     },
     {
-      '<leader>us',
+      '<leader>ts',
       function()
         Snacks.toggle.scroll():toggle()
       end,
