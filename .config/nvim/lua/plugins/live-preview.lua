@@ -7,4 +7,7 @@ return {
     -- 'echasnovski/mini.pick',
     'folke/snacks.nvim',
   },
+  keys = {
+    { '<leader>up', ':LivePreview start<CR>', desc = 'Start live preview in browser' },
+  },
 }
