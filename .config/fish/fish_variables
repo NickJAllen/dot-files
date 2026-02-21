@@ -1,5 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR __fish_initialized:3800
-SETUVAR fish_key_bindings:fish_vi_key_bindings
+SETUVAR __fish_initialized:4300
 SETUVAR fish_user_paths:/home/nick/bin\x1e/Users/nick/bin\x1e/home/nick/go/bin

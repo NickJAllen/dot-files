@@ -172,6 +172,7 @@ return {
     'jay-babu/mason-nvim-dap.nvim',
     'leoluz/nvim-dap-go',
     'Weissle/persistent-breakpoints.nvim',
+    'jbyuki/one-small-step-for-vimkind',
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -202,6 +203,13 @@ return {
         require('dap').run_last()
       end,
       desc = 'Run Last',
+    },
+    {
+      '<leader>dL',
+      function()
+        require('osv').launch { port = 8086 }
+      end,
+      desc = 'Launch Lua Debugging',
     },
     {
       '<leader>dq',
@@ -472,6 +480,18 @@ return {
         args = { '--port', '${port}' },
       },
     }
+
+    dap.configurations.lua = {
+      {
+        type = 'nlua',
+        request = 'attach',
+        name = 'Attach to running Neovim instance',
+      },
+    }
+
+    dap.adapters.nlua = function(callback, config)
+      callback { type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 }
+    end
 
     dap.providers.configs['nick'] = function(buffnr)
       return {
