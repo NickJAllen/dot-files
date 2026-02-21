@@ -49,5 +49,19 @@ return {
       end,
       desc = 'Select file 4 in harpoon',
     },
+    {
+      '<leader>e',
+      function()
+        require('harpoon'):list():prev()
+      end,
+      desc = 'Select previous file in harpoon',
+    },
+    {
+      '<leader>u',
+      function()
+        require('harpoon'):list():next()
+      end,
+      desc = 'Select next file in harpoon',
+    },
   },
 }
