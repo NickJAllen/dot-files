@@ -59,8 +59,8 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>a', group = 'Automate' },
-        { '<leader>aq', group = 'Automate Quickfix list' },
+        { '<leader>A', group = 'Automate' },
+        { '<leader>Aq', group = 'Automate Quickfix list' },
         { '<leader>b', group = 'Buffer' },
         { '<leader>c', group = 'Code' },
         { '<leader>d', group = 'Debug' },

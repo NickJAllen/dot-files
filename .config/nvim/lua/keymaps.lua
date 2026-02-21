@@ -73,14 +73,14 @@ vim.api.nvim_create_user_command('QuickfixItemDo', function(opts)
   end
 end, { nargs = '?' })
 
-vim.keymap.set('n', '<leader>aqi', nick.utils.quickfix_item_do, { desc = 'Run command on each item in the quickfix list' })
+vim.keymap.set('n', '<leader>Aqi', nick.utils.quickfix_item_do, { desc = 'Run command on each item in the quickfix list' })
 
-vim.keymap.set('n', '<leader>aqf', function()
+vim.keymap.set('n', '<leader>Aqf', function()
   local command = vim.fn.input 'Enter command to run on each file in the quickfix list'
   nick.utils.quickfix_file_do(command)
 end, { desc = 'Run command on each file in the quickfix list' })
 
-vim.keymap.set('n', '<leader>ac', function()
+vim.keymap.set('n', '<leader>Ac', function()
   nick.utils.cancel_actions()
 end, { desc = 'Cancel automated actions' })
 
