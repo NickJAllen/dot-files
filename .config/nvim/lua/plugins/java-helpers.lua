@@ -5,6 +5,7 @@ return {
     cmd = {
       'JavaHelpersNewFile',
       'JavaHelpersPickStackTraceLine',
+      'JavaHelpersPickStackTrace',
       'JavaHelpersGoToStackTraceLine',
       'JavaHelpersGoUpStackTrace',
       'JavaHelpersGoDownStackTrace',
@@ -55,6 +56,7 @@ return {
       { '<leader>JG', ':JavaHelpersGoToStackTraceLine +<cr>', desc = 'Go to Java stack trace line on Clipboard' },
       { '<leader>Jp', ':JavaHelpersPickStackTraceLine<cr>', desc = 'Pick Java stack trace line' },
       { '<leader>JP', ':JavaHelpersPickStackTraceLine +<cr>', desc = 'Pick Java stack trace line from Clipboard' },
+      { '<leader>Js', ':JavaHelpersPickStackTrace<cr>', desc = 'Pick Java stack trace in current file' },
       { '[j', ':JavaHelpersGoUpStackTrace<cr>', desc = 'Go up Java stack trace' },
       { ']j', ':JavaHelpersGoDownStackTrace<cr>', desc = 'Go down Java stack trace' },
       { '[J', ':JavaHelpersGoToPrevStackTrace<cr>', desc = 'Go to previous Java stack trace' },
