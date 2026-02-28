@@ -584,4 +584,21 @@ function M.choose_random_colorscheme()
   end
 end
 
+function M.deduplicate_qf()
+  local qf = vim.fn.getqflist()
+  local seen = {}
+  local unique_qf = {}
+
+  for _, entry in ipairs(qf) do
+    -- Create a unique ID for each entry
+    local id = string.format('%d:%d:%d', entry.bufnr, entry.lnum, entry.col)
+    if not seen[id] then
+      table.insert(unique_qf, entry)
+      seen[id] = true
+    end
+  end
+
+  vim.fn.setqflist(unique_qf, 'r')
+end
+
 return M

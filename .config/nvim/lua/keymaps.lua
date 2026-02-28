@@ -84,6 +84,8 @@ vim.keymap.set('n', '<leader>Ac', function()
   nick.utils.cancel_actions()
 end, { desc = 'Cancel automated actions' })
 
+vim.keymap.set('n', '<leader>qd', nick.utils.deduplicate_qf, { desc = 'Remove duplicate entries from quickfix list' })
+
 -- Utilities
 
 vim.keymap.set('n', '<leader>Ur', nick.utils.choose_random_colorscheme, { desc = 'Choose Random Colorscheme' })
