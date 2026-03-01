@@ -16,6 +16,8 @@ if status is-interactive
     starship init fish | source
 
     fish_add_path $HOME/bin
+    fish_add_path $HOME/.local/bin
+
     set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
     set -gx EDITOR nvim
 
@@ -26,3 +28,6 @@ if status is-interactive
             source ~/.config/fish/macos-config.fish
     end
 end
+
+# Created by `pipx` on 2026-03-01 16:10:44
+set PATH $PATH /Users/nick/.local/bin

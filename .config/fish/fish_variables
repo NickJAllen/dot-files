@@ -1,4 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/usr/lib/llvm\x2d21/bin\x1e/home/nick/bin\x1e/Users/nick/bin\x1e/home/nick/go/bin
+SETUVAR fish_user_paths:/Users/nick/\x2elocal/bin\x1e/Users/nick/src/flutter/bin\x1e/usr/lib/llvm\x2d21/bin\x1e/home/nick/bin\x1e/Users/nick/bin\x1e/home/nick/go/bin
