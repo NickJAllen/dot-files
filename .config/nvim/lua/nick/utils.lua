@@ -570,6 +570,7 @@ local function get_random_colorscheme()
     'tokyodark',
     'tokyonight-night',
     'vague',
+    'vitesse',
     'zephyr',
   }
 
