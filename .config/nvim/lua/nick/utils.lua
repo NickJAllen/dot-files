@@ -564,6 +564,7 @@ local function get_random_colorscheme()
     'teide',
     'teide-darker',
     'evergarden',
+    'min-theme-dark',
   }
 
   while true do
