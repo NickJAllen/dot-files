@@ -561,6 +561,9 @@ local function get_random_colorscheme()
     'melange',
     'nightfly',
     'hybrid',
+    'teide',
+    'teide-darker',
+    'evergarden',
   }
 
   while true do
