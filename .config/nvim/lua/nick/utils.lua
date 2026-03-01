@@ -569,6 +569,7 @@ local function get_random_colorscheme()
     'thorn',
     'tokyodark',
     'tokyonight-night',
+    'vague',
     'zephyr',
   }
 
