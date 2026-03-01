@@ -565,6 +565,7 @@ local function get_random_colorscheme()
     'teide-darker',
     'evergarden',
     'min-theme-dark',
+    'moonfly',
   }
 
   while true do
