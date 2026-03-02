@@ -1,4 +1,5 @@
 local should_use_dap_ui = false
+local should_use_persistent_breakpoints = false
 
 local function open_debug_ui()
   if should_use_dap_ui then
@@ -25,8 +26,11 @@ local function toggle_debug_ui()
 end
 
 local function toggle_breakpoint()
-  require('persistent-breakpoints.api').toggle_breakpoint()
-  -- require('dap').toggle_breakpoint()
+  if should_use_persistent_breakpoints then
+    require('persistent-breakpoints.api').toggle_breakpoint()
+  else
+    require('dap').toggle_breakpoint()
+  end
 end
 
 local function get_breakpoint_condition(callback)
@@ -36,20 +40,46 @@ local function get_breakpoint_condition(callback)
 end
 
 local function set_conditional_breakpoint()
-  require('persistent-breakpoints.api').set_conditional_breakpoint()
-  -- get_breakpoint_condition(function(condition)
-  --   require('dap').set_breakpoint(condition)
-  -- end)
+  if should_use_persistent_breakpoints then
+    require('persistent-breakpoints.api').set_conditional_breakpoint()
+  else
+    get_breakpoint_condition(function(condition)
+      require('dap').set_breakpoint(condition)
+    end)
+  end
+end
+
+local function get_hit_count(callback)
+  vim.ui.input({
+    prompt = 'Hit Count',
+  }, callback)
+end
+
+local function set_hit_count_breakpoint()
+  if should_use_persistent_breakpoints then
+    -- TODO: Dosn't seem to be supported
+  else
+    get_hit_count(function(hit_count)
+      require('dap').set_breakpoint(nil, hit_count)
+    end)
+  end
 end
 
 local function set_log_point()
-  require('persistent-breakpoints.api').set_log_point()
-  -- local expression = vim.fn.input 'Enter log point expression: '
-  -- require('dap').set_breakpoint(nil, nil, expression)
+  if should_use_persistent_breakpoints then
+    require('persistent-breakpoints.api').set_log_point()
+  else
+    local expression = vim.fn.input 'Enter log point expression: '
+    require('dap').set_breakpoint(nil, nil, expression)
+  end
 end
 
 local function clear_all_breakpoints()
-  require('persistent-breakpoints.api').clear_all_breakpoints()
+  if should_use_persistent_breakpoints then
+    require('persistent-breakpoints.api').clear_all_breakpoints()
+  else
+    require('dap').clear_breakpoints()
+  end
 end
 
 local function add_watch()
@@ -285,6 +315,11 @@ return {
       '<leader>dB',
       set_conditional_breakpoint,
       desc = 'Set Conditional Breakpoint',
+    },
+    {
+      '<leader>dh',
+      set_hit_count_breakpoint,
+      desc = 'Set Hit Count Breakpoint',
     },
     {
       '<leader>dm',

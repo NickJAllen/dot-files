@@ -88,7 +88,7 @@ return {
           end
 
           if client.name == 'jdtls' then
-            map('<leader>dh', ':JdtUpdateHotcode<CR>', 'Hotswap Java Code')
+            map('<leader>dH', ':JdtUpdateHotcode<CR>', 'Hotswap Java Code')
 
             local jdtls = require 'jdtls'
 
