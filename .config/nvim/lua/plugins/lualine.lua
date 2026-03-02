@@ -14,6 +14,14 @@ vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
   end,
 })
 
+local tmux_session_name = ''
+local handle = io.popen "tmux display-message -p '#S' 2>/dev/null"
+
+if handle then
+  tmux_session_name = handle:read('*a'):gsub('%s+', '')
+  handle:close()
+end
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -75,7 +83,17 @@ return {
             },
           },
         },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {
+          {
+            function()
+              return tmux_session_name ~= '' and ('󱫋 ' .. tmux_session_name) or ''
+            end,
+            color = { fg = '#ff9e64', gui = 'bold' },
+          },
+          'encoding',
+          'fileformat',
+          'filetype',
+        },
         lualine_y = { 'progress' },
         lualine_z = { 'location' },
       },
