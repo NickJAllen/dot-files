@@ -135,7 +135,7 @@ return {
             function()
               return vcs_status ~= '' and ('󰘬 ' .. vcs_status) or ''
             end,
-            color = { fg = '#ff9e64', gui = 'bold' },
+            color = { fg = '#4bbc70', gui = 'bold' },
           },
           'encoding',
           'fileformat',
