@@ -15,12 +15,36 @@ vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
 })
 
 local tmux_session_name = ''
-local handle = io.popen "tmux display-message -p '#S' 2>/dev/null"
 
-if handle then
-  tmux_session_name = handle:read('*a'):gsub('%s+', '')
-  handle:close()
+local function update_tmux_session_name()
+  vim.system({ 'tmux', 'display-message', '-p', '#S' }, { text = true }, function(obj)
+    if obj.code == 0 then
+      vim.schedule(function()
+        tmux_session_name = obj.stdout:gsub('%s+$', '')
+      end)
+    end
+  end)
 end
+
+local vcs_status = ''
+
+local function update_vcs_status()
+  vim.system({ 'vcs-status.sh' }, { text = true }, function(obj)
+    if obj.code == 0 then
+      vim.schedule(function()
+        vcs_status = obj.stdout:gsub('%s+$', '')
+      end)
+    end
+  end)
+end
+
+local function update_status()
+  update_tmux_session_name()
+  update_vcs_status()
+end
+
+local timer = vim.loop.new_timer()
+timer:start(0, 5000, update_status)
 
 return {
   {
@@ -87,6 +111,12 @@ return {
           {
             function()
               return tmux_session_name ~= '' and ('󱫋 ' .. tmux_session_name) or ''
+            end,
+            color = { fg = '#ff9e64', gui = 'bold' },
+          },
+          {
+            function()
+              return vcs_status ~= '' and ('󰘬 ' .. vcs_status) or ''
             end,
             color = { fg = '#ff9e64', gui = 'bold' },
           },
