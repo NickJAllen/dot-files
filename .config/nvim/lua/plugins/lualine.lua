@@ -20,7 +20,12 @@ local function update_tmux_session_name()
   vim.system({ 'tmux', 'display-message', '-p', '#S' }, { text = true }, function(obj)
     if obj.code == 0 then
       vim.schedule(function()
-        tmux_session_name = obj.stdout:gsub('%s+$', '')
+        local s = obj.stdout:gsub('%s+$', '')
+
+        if s ~= tmux_session_name then
+          tmux_session_name = s
+          require('lualine').refresh()
+        end
       end)
     end
   end)
@@ -32,7 +37,12 @@ local function update_vcs_status()
   vim.system({ 'vcs-status.sh' }, { text = true }, function(obj)
     if obj.code == 0 then
       vim.schedule(function()
-        vcs_status = obj.stdout:gsub('%s+$', '')
+        local s = obj.stdout:gsub('%s+$', '')
+
+        if s ~= vcs_status then
+          vcs_status = s
+          require('lualine').refresh()
+        end
       end)
     end
   end)
