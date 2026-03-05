@@ -33,8 +33,15 @@ end
 
 local vcs_status = ''
 
+local function get_current_directory()
+  local buf_path = vim.api.nvim_buf_get_name(0)
+  local dir = vim.fs.dirname(buf_path)
+end
+
+local root_dir = vim.fn.getcwd()
+
 local function update_vcs_status()
-  vim.system({ 'vcs-status.sh' }, { text = true }, function(obj)
+  vim.system({ 'vcs-status.sh', root_dir }, { text = true }, function(obj)
     if obj.code == 0 then
       vim.schedule(function()
         local s = obj.stdout:gsub('%s+$', '')
@@ -54,7 +61,10 @@ local function update_status()
 end
 
 local timer = vim.loop.new_timer()
-timer:start(0, 5000, update_status)
+
+if timer then
+  timer:start(0, 5000, update_status)
+end
 
 return {
   {
