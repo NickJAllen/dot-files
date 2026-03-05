@@ -120,11 +120,8 @@ return {
         lualine_x = {
           {
             function()
-              local host = vim.uv.os_gethostname()
-              if os.getenv 'SSH_CLIENT' or os.getenv 'SSH_TTY' then
-                return '󰒋 ' .. host
-              end
-              return '' -- Hide it if we're just on local machine
+              local host = vim.uv.os_gethostname():match '([^.]+)'
+              return '󰒋 ' .. host
             end,
             color = { fg = '#7aa2f7' }, -- Optional color
           },
