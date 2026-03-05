@@ -1,7 +1,33 @@
--- [[ Setting options ]]
--- See `:help vim.o`
---  For more options, you can see `:help option-list`
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
+
+vim.g.neovide_input_macos_option_key_is_meta = 'only_left'
+
+vim.g.snacks_animate = true
+vim.g.snacks_indent = true
+
+-- Allow loading directory specific configurations
+vim.opt.exrc = true
+
+-- Disable swap file as this was annoying me
+vim.opt.swapfile = false
+
+vim.opt.fillchars = {
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+  diff = '╱',
+  eob = ' ',
+}
+
+vim.opt.background = 'dark'
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
