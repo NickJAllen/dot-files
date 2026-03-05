@@ -12,6 +12,8 @@ vim.g.neovide_input_macos_option_key_is_meta = 'only_left'
 vim.g.snacks_animate = true
 vim.g.snacks_indent = true
 
+vim.g.editorconfig = true
+
 -- Allow loading directory specific configurations
 vim.opt.exrc = true
 
