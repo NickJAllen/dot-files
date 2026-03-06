@@ -85,4 +85,10 @@ if vim.env.TMUX then
     group = vim.api.nvim_create_augroup('TmuxPaneDirUpdate', { clear = true }),
     callback = update_tmux_pane_directory,
   })
+  vim.api.nvim_create_autocmd('VimLeave', {
+    group = vim.api.nvim_create_augroup('TmuxCleanup', { clear = true }),
+    callback = function()
+      vim.fn.jobstart { 'tmux', 'set-option', '-pu', '@neovim_path' }
+    end,
+  })
 end
