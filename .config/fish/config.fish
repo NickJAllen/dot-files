@@ -28,6 +28,3 @@ if status is-interactive
             source ~/.config/fish/macos-config.fish
     end
 end
-
-# Created by `pipx` on 2026-03-01 16:10:44
-set PATH $PATH /Users/nick/.local/bin
