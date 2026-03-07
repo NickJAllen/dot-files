@@ -33,11 +33,6 @@ end
 
 local vcs_status = ''
 
-local function get_current_directory()
-  local buf_path = vim.api.nvim_buf_get_name(0)
-  local dir = vim.fs.dirname(buf_path)
-end
-
 local root_dir = vim.fn.getcwd()
 
 local function update_vcs_status()
