@@ -162,16 +162,11 @@ return {
         },
       }
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities(nil, true)
-
       local servers = {
         clangd = {},
         jdtls = {},
         rust_analyzer = {},
         lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
           settings = {
             Lua = {
               completion = {
