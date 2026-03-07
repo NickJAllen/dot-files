@@ -48,7 +48,6 @@ vim.keymap.set('n', '<leader>bq', nick.utils.delete_current_buffer, { desc = 'Cl
 vim.keymap.set('n', '<leader>bd', nick.utils.delete_current_buffer_and_file, { desc = 'Delete Buffer and File' })
 vim.keymap.set('n', '<leader>bn', ':enew<CR>', { desc = 'New Buffer' })
 vim.keymap.set('n', '<leader>bo', nick.utils.delete_other_unmodified_buffers, { desc = 'Close Other Unmodified Buffers' })
-vim.keymap.set('n', '<leader>bm', nick.utils.open_messages, { desc = 'Open Messages' })
 vim.keymap.set('n', '<leader>br', nick.utils.reload_unmodified_buffers, { desc = 'Reload Unmodified Buffers' })
 
 vim.keymap.set('n', '<leader>s.', nick.utils.open_directory_in_oil, { desc = 'Open directory in Oil' }) -- vim: ts=2 sts=2 sw=2 et

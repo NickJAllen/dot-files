@@ -124,13 +124,6 @@ function M.delete_other_unmodified_buffers()
   end
 end
 
-function M.open_messages()
-  local buf = vim.api.nvim_create_buf(false, true)
-  local output = vim.fn.execute 'messages'
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(output, '\n'))
-  vim.api.nvim_set_current_buf(buf)
-end
-
 ---@param bufnr integer
 function M.delete_buffer_and_file(bufnr)
   local buftype = vim.bo[bufnr].buftype
