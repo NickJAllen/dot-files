@@ -172,9 +172,10 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
-              diagnostics = {
-                globals = { 'vim' },
-              },
+              runtime = { pathStrict = false },
+              -- diagnostics = {
+              --   globals = { 'vim' },
+              -- },
             },
           },
         },
