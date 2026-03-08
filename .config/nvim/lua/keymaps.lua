@@ -89,7 +89,8 @@ vim.keymap.set('n', '<leader>qd', nick.utils.deduplicate_qf, { desc = 'Remove du
 
 vim.keymap.set('n', '<leader>Ur', nick.utils.choose_random_colorscheme, { desc = 'Choose Random Colorscheme' })
 vim.keymap.set('n', '<leader>Ul', ':Lazy<CR>', { desc = 'Show Lazy Plug-in Manager' })
-vim.keymap.set('n', '<leader>Um', ':Mason<CR>', { desc = 'Show Lazy Plug-in Manager' })
+vim.keymap.set('n', '<leader>Um', ':Mason<CR>', { desc = 'Show Mason' })
+vim.keymap.set('x', '<leader>Us', ':CodeSnap<CR>', { desc = 'Copy code snapshot to clipboard' })
 
 -- Mercurial
 
