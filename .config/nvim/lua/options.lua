@@ -101,6 +101,21 @@ vim.opt.foldlevel = 1
 
 vim.opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
+-- OSC 52 allows copy and pasting with remote client even through tmux.
+-- Unfortunately some terminals like WezTerm don't support reading the clipboard for pasting as they consider this a security risk and just hang the process
+-- Once WezTerm fixes this and somehow allows it then set this to true.
+local is_os_paste_supported = false
+
+local function os_paste(register)
+  if is_os_paste_supported then
+    require('vim.ui.clipboard.osc52').paste(register)
+    return
+  end
+
+  vim.notify 'OS paste is disabled as some terminals like WezTerm just hang\nUse the OS shortcut to paste from the OS'
+  return { '', '' }
+end
+
 vim.g.clipboard = {
   name = 'OSC 52',
   copy = {
@@ -108,8 +123,8 @@ vim.g.clipboard = {
     ['*'] = require('vim.ui.clipboard.osc52').copy '*',
   },
   paste = {
-    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
-    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+    ['+'] = os_paste,
+    ['*'] = os_paste,
   },
 }
 
