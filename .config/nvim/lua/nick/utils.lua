@@ -552,6 +552,8 @@ local function get_random_colorscheme()
     'nightfox',
     'nord',
     'nordic',
+    'oc-2',
+    'oc-2-noir',
     'oasis-mirage',
     'onedark',
     'oxocarbon',
