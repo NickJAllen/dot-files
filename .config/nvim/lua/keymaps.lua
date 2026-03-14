@@ -64,25 +64,6 @@ vim.keymap.set('n', ']e', function()
   }
 end, { desc = 'Go to next diagnostic error' })
 
-vim.api.nvim_create_user_command('QuickfixItemDo', function(opts)
-  if opts.args == '' then
-    nick.utils.quickfix_item_do()
-  else
-    nick.utils.quickfix_item_do_command(opts.args)
-  end
-end, { nargs = '?' })
-
-vim.keymap.set('n', '<leader>Aqi', nick.utils.quickfix_item_do, { desc = 'Run command on each item in the quickfix list' })
-
-vim.keymap.set('n', '<leader>Aqf', function()
-  local command = vim.fn.input 'Enter command to run on each file in the quickfix list'
-  nick.utils.quickfix_file_do(command)
-end, { desc = 'Run command on each file in the quickfix list' })
-
-vim.keymap.set('n', '<leader>Ac', function()
-  nick.utils.cancel_actions()
-end, { desc = 'Cancel automated actions' })
-
 vim.keymap.set('n', '<leader>qd', nick.utils.deduplicate_qf, { desc = 'Remove duplicate entries from quickfix list' })
 
 -- Utilities
