@@ -237,6 +237,8 @@ end
 
 local function get_random_colorscheme()
   local schemes = {
+    'ayu-dark',
+    'ayu-mirage',
     'bamboo',
     'catppuccin-mocha',
     'codedark',
