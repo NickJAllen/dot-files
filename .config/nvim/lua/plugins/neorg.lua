@@ -2,6 +2,7 @@ return {
   'nvim-neorg/neorg',
   lazy = false,
   version = '*',
+  enabled = false,
   config = function()
     require('neorg').setup {
       load = {
