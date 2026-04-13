@@ -2,7 +2,11 @@ return {
   'nvim-neorg/neorg',
   lazy = false,
   version = '*',
-  enabled = false,
+  -- enabled = false,
+  dependencies = {
+    'nvim-neorg/tree-sitter-norg',
+    'nvim-neorg/tree-sitter-norg-meta',
+  },
   config = function()
     require('neorg').setup {
       load = {
