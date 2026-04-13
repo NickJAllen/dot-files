@@ -71,15 +71,15 @@ end
 
 -- Called before we are about to perform an LSP refactoring
 function M.before_refactoring()
-  log.trace 'About to perform refactoring'
-  M.save_all()
+  -- log.trace 'About to perform refactoring'
+  -- M.save_all()
 end
 
 -- Called after an LSP refactoring has completed
 function M.after_refactoring_complete()
-  log.trace 'Refactoring complete'
-  M.save_all()
-  M.reload_unmodified_buffers()
+  -- log.trace 'Refactoring complete'
+  -- M.save_all()
+  -- M.reload_unmodified_buffers()
 end
 
 -- Reloads any files from disk that haven't been modified in neovim
