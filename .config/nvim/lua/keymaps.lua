@@ -77,7 +77,10 @@ vim.keymap.set('n', '<leader>Ug', function()
   collectgarbage 'collect'
   local after = collectgarbage 'count'
   print(string.format('Manual GC: %.2fKB -> %.2fKB', before, after))
-end)
+end, { desc = 'Perform GC' })
+vim.keymap.set('n', '<leader>Up', function()
+  Snacks.profiler.toggle()
+end, { desc = 'Toggle Snacks Profiler' })
 
 -- Mercurial
 
