@@ -245,6 +245,7 @@ local function get_random_colorscheme()
     'duskfox',
     'edge',
     'embark',
+    'ember',
     'everforest',
     'evergarden',
     'gruvbox-material',
