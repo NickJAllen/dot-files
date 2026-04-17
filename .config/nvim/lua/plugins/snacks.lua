@@ -188,22 +188,22 @@ return {
       end,
       desc = 'Buffer Lines',
     },
-    {
-      '<leader>sd',
-      function()
-        Snacks.picker.diagnostics()
-      end,
-      desc = 'Workspace Diagnostics',
-    },
-    {
-      '<leader>se',
-      function()
-        Snacks.picker.diagnostics {
-          severity = vim.diagnostic.severity.ERROR,
-        }
-      end,
-      desc = 'Workspace Errors',
-    },
+    -- {
+    --   '<leader>sd',
+    --   function()
+    --     Snacks.picker.diagnostics()
+    --   end,
+    --   desc = 'Workspace Diagnostics',
+    -- },
+    -- {
+    --   '<leader>se',
+    --   function()
+    --     Snacks.picker.diagnostics {
+    --       severity = vim.diagnostic.severity.ERROR,
+    --     }
+    --   end,
+    --   desc = 'Workspace Errors',
+    -- },
     {
       '<leader>sE',
       function()

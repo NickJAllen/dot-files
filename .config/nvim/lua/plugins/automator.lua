@@ -17,5 +17,7 @@ return {
     { '<leader>Af', ':Automator toggle_file_mode<CR>', desc = 'Toggle file mode' },
     { '<leader>Ac', ':Automator insert_code_action<CR>', desc = 'Insert Code Action' },
     { '<leader>As', ':Automator stop<CR>', desc = 'Stop' },
+    { '<leader>se', ':Automator pick errors<CR>', desc = 'Workspace errors' },
+    { '<leader>sd', ':Automator pick diagnostics<CR>', desc = 'Workspace errors' },
   },
 }
