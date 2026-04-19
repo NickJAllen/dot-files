@@ -6,6 +6,7 @@ return {
   dependencies = {
     'nvim-neorg/tree-sitter-norg',
     'nvim-neorg/tree-sitter-norg-meta',
+    'vhyrro/luarocks.nvim',
   },
   config = function()
     require('neorg').setup {
