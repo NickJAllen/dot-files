@@ -152,7 +152,7 @@ return {
       desc = 'Grep',
     },
     {
-      '<leader>sw',
+      '<leader>sG',
       function()
         Snacks.picker.grep_word()
       end,
@@ -204,22 +204,22 @@ return {
     --   end,
     --   desc = 'Workspace Errors',
     -- },
-    {
-      '<leader>sE',
-      function()
-        Snacks.picker.diagnostics_buffer {
-          severity = vim.diagnostic.severity.ERROR,
-        }
-      end,
-      desc = 'Buffer Errors',
-    },
-    {
-      '<leader>sD',
-      function()
-        Snacks.picker.diagnostics_buffer()
-      end,
-      desc = 'Buffer Diagnostics',
-    },
+    -- {
+    --   '<leader>sE',
+    --   function()
+    --     Snacks.picker.diagnostics_buffer {
+    --       severity = vim.diagnostic.severity.ERROR,
+    --     }
+    --   end,
+    --   desc = 'Buffer Errors',
+    -- },
+    -- {
+    --   '<leader>sD',
+    --   function()
+    --     Snacks.picker.diagnostics_buffer()
+    --   end,
+    --   desc = 'Buffer Diagnostics',
+    -- },
     {
       '<leader>sf',
       function()

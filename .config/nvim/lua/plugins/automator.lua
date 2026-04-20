@@ -18,6 +18,10 @@ return {
     { '<leader>Ac', ':Automator insert_code_action<CR>', desc = 'Insert Code Action' },
     { '<leader>As', ':Automator stop<CR>', desc = 'Stop' },
     { '<leader>se', ':Automator pick errors<CR>', desc = 'Workspace errors' },
+    { '<leader>sw', ':Automator pick warnings<CR>', desc = 'Workspace warnings' },
     { '<leader>sd', ':Automator pick diagnostics<CR>', desc = 'Workspace diagnostics' },
+    { '<leader>sD', ':Automator pick file-diagnostics<CR>', desc = 'File diagnostics' },
+    { '<leader>sE', ':Automator pick file-errors<CR>', desc = 'File errors' },
+    { '<leader>sW', ':Automator pick file-warnings<CR>', desc = 'File warnings' },
   },
 }
