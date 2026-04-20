@@ -23,5 +23,7 @@ return {
     { '<leader>sD', ':Automator pick file-diagnostics<CR>', desc = 'File diagnostics' },
     { '<leader>sE', ':Automator pick file-errors<CR>', desc = 'File errors' },
     { '<leader>sW', ':Automator pick file-warnings<CR>', desc = 'File warnings' },
+    { '<leader>sq', ':Automator pick quickfix<CR>', desc = 'Quickfix list' },
+    { '<leader>sr', ':Automator resume_pick<CR>', desc = 'Resume pick' },
   },
 }
