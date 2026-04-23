@@ -26,5 +26,8 @@ return {
 
     vim.wo.foldlevel = 99
     vim.wo.conceallevel = 2
+
+    vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>', { desc = 'Neorg Index', silent = true })
+    vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>', { desc = 'Neorg Return', silent = true })
   end,
 }
