@@ -67,6 +67,9 @@ end, { desc = 'Go to next diagnostic error' })
 vim.keymap.set('n', '<leader>qd', nick.utils.deduplicate_qf, { desc = 'Remove duplicate entries from quickfix list' })
 
 -- Utilities
+--
+
+local started_verbose_debugging = false
 
 vim.keymap.set('n', '<leader>Ur', nick.utils.choose_random_colorscheme, { desc = 'Choose Random Colorscheme' })
 vim.keymap.set('n', '<leader>Ul', ':Lazy<CR>', { desc = 'Show Lazy Plug-in Manager' })
@@ -81,6 +84,14 @@ end, { desc = 'Perform GC' })
 vim.keymap.set('n', '<leader>Up', function()
   Snacks.profiler.toggle()
 end, { desc = 'Toggle Snacks Profiler' })
+vim.keymap.set('n', '<leader>Ud', function()
+  if not started_verbose_debugging then
+    started_verbose_debugging = true
+    local name = '/tmp/neovim-jit-debug.log'
+    require('jit.v').start(name)
+    vim.notify('Started JIT debug logging to ' .. name)
+  end
+end, { desc = 'Start JIT Debug log' })
 
 -- Mercurial
 
