@@ -105,33 +105,33 @@ vim.opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 -- Unfortunately some terminals like WezTerm don't support reading the clipboard for pasting as they consider this a security risk and just hang the process
 -- Once WezTerm fixes this and somehow allows it then set this to true.
 
-local is_os_paste_supported = false
-
-local function os_paste_unsupported(register)
-  vim.notify 'OS paste is disabled as some terminals like WezTerm just hang\nUse the OS shortcut to paste from the OS'
-  return { '', '' }
-end
-
-local function os_paste(register)
-  if is_os_paste_supported then
-    return require('vim.ui.clipboard.osc52').paste(register)
-  end
-
-  return function()
-    os_paste_unsupported(register)
-  end
-end
-
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
-    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
-  },
-  paste = {
-    ['+'] = os_paste '+',
-    ['*'] = os_paste '*',
-  },
-}
+-- local is_os_paste_supported = true
+--
+-- local function os_paste_unsupported(register)
+--   vim.notify 'OS paste is disabled as some terminals like WezTerm just hang\nUse the OS shortcut to paste from the OS'
+--   return { '', '' }
+-- end
+--
+-- local function os_paste(register)
+--   if is_os_paste_supported then
+--     return require('vim.ui.clipboard.osc52').paste(register)
+--   end
+--
+--   return function()
+--     os_paste_unsupported(register)
+--   end
+-- end
+--
+-- vim.g.clipboard = {
+--   name = 'OSC 52',
+--   copy = {
+--     ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+--     ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+--   },
+--   paste = {
+--     ['+'] = os_paste '+',
+--     ['*'] = os_paste '*',
+--   },
+-- }
 
 -- vim: ts=2 sts=2 sw=2 et

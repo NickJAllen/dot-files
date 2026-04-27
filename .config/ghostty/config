@@ -1,3 +1,10 @@
 macos-option-as-alt = true
 window-decoration = none
 maximize = true
+
+# Allow applications to read from the system clipboard
+clipboard-read = allow
+
+# Allow applications to write to the system clipboard (standard)
+clipboard-write = allow
+
