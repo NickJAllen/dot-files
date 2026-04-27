@@ -84,7 +84,9 @@ end, { desc = 'Perform GC' })
 vim.keymap.set('n', '<leader>Up', function()
   Snacks.profiler.toggle()
 end, { desc = 'Toggle Snacks Profiler' })
-vim.keymap.set('n', '<leader>Ud', function()
+
+-- Can be useful when getting infinite loops in lua code to see what is happenning
+vim.keymap.set('n', '<leader>Uv', function()
   if not started_verbose_debugging then
     started_verbose_debugging = true
     local name = '/tmp/neovim-jit-debug.log'
@@ -92,6 +94,33 @@ vim.keymap.set('n', '<leader>Ud', function()
     vim.notify('Started JIT debug logging to ' .. name)
   end
 end, { desc = 'Start JIT Debug log' })
+
+local has_added_thread_dump_hook = false
+local log_path = vim.fn.stdpath 'data' .. '/debug_trace.log'
+
+local function on_periodic_stack_dump()
+  local f = io.open(log_path, 'a')
+  if f then
+    f:write('\n--- TRACEBACK: ' .. os.date '%Y-%m-%d %H:%M:%S' .. ' ---\n')
+    f:write(debug.traceback() .. '\n')
+    f.close(f)
+  end
+end
+
+--- Dump stack every after a number of instructions (useful to debug inifinite loops)
+vim.keymap.set('n', '<leader>Ud', function()
+  -- Set a hook that prints a traceback every 100,000 instructions
+
+  if not has_added_thread_dump_hook then
+    debug.sethook(on_periodic_stack_dump, '', 100000)
+    vim.notify('Dumping periodic stack traces to ' .. log_path)
+    has_added_thread_dump_hook = true
+  else
+    debug.sethook()
+    vim.notify 'Removed debug dump hook'
+    has_added_thread_dump_hook = false
+  end
+end, { desc = 'Toggle dumping of stack trace every so often' })
 
 -- Mercurial
 
