@@ -95,32 +95,63 @@ vim.keymap.set('n', '<leader>Uv', function()
   end
 end, { desc = 'Start JIT Debug log' })
 
+local periodic_stack_dump_file_path = '/tmp/nvim-' .. vim.fn.getpid() .. '-stack-dumps.txt'
+---@type file*?
+local periodic_stack_dump_file = nil
 local has_added_thread_dump_hook = false
-local log_path = vim.fn.stdpath 'data' .. '/debug_trace.log'
 
 local function on_periodic_stack_dump()
-  local f = io.open(log_path, 'a')
+  if not periodic_stack_dump_file then
+    periodic_stack_dump_file = io.open(periodic_stack_dump_file_path, 'a')
+  end
+
+  local f = periodic_stack_dump_file
+
   if f then
     f:write('\n--- TRACEBACK: ' .. os.date '%Y-%m-%d %H:%M:%S' .. ' ---\n')
     f:write(debug.traceback() .. '\n')
-    f.close(f)
+    f:flush(f)
   end
 end
 
---- Dump stack every after a number of instructions (useful to debug inifinite loops)
-vim.keymap.set('n', '<leader>Ud', function()
-  -- Set a hook that prints a traceback every 100,000 instructions
-
-  if not has_added_thread_dump_hook then
-    debug.sethook(on_periodic_stack_dump, '', 100000)
-    vim.notify('Dumping periodic stack traces to ' .. log_path)
-    has_added_thread_dump_hook = true
-  else
-    debug.sethook()
-    vim.notify 'Removed debug dump hook'
-    has_added_thread_dump_hook = false
+local function start_dumping_stack_periodically()
+  if has_added_thread_dump_hook then
+    return
   end
-end, { desc = 'Toggle dumping of stack trace every so often' })
+
+  debug.sethook(on_periodic_stack_dump, '', 1000000)
+  vim.notify('Dumping periodic stack traces to ' .. periodic_stack_dump_file_path)
+  has_added_thread_dump_hook = true
+end
+
+local function stop_dumping_stack_periodically()
+  if not has_added_thread_dump_hook then
+    return
+  end
+
+  debug.sethook()
+
+  if periodic_stack_dump_file then
+    periodic_stack_dump_file:close()
+    periodic_stack_dump_file = nil
+  end
+
+  has_added_thread_dump_hook = false
+  vim.notify('Stopped dumping periodic stack traces to ' .. periodic_stack_dump_file_path)
+end
+
+local function toggle_dumping_stack_periodically()
+  if has_added_thread_dump_hook then
+    stop_dumping_stack_periodically()
+  else
+    start_dumping_stack_periodically()
+  end
+end
+
+start_dumping_stack_periodically()
+
+--- Dump stack every after a number of instructions (useful to debug inifinite loops)
+vim.keymap.set('n', '<leader>Ud', toggle_dumping_stack_periodically, { desc = 'Toggle dumping of stack trace every so often' })
 
 -- Mercurial
 
