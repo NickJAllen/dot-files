@@ -148,7 +148,7 @@ local function toggle_dumping_stack_periodically()
   end
 end
 
-start_dumping_stack_periodically()
+vim.schedule(start_dumping_stack_periodically)
 
 --- Dump stack every after a number of instructions (useful to debug inifinite loops)
 vim.keymap.set('n', '<leader>Ud', toggle_dumping_stack_periodically, { desc = 'Toggle dumping of stack trace every so often' })
