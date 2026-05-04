@@ -86,15 +86,6 @@ vim.keymap.set('n', '<leader>Up', function()
 end, { desc = 'Toggle Snacks Profiler' })
 
 -- Can be useful when getting infinite loops in lua code to see what is happenning
-vim.keymap.set('n', '<leader>Uv', function()
-  if not started_verbose_debugging then
-    started_verbose_debugging = true
-    local name = '/tmp/neovim-jit-debug.log'
-    require('jit.v').start(name)
-    vim.notify('Started JIT debug logging to ' .. name)
-  end
-end, { desc = 'Start JIT Debug log' })
-
 local periodic_stack_dump_file_path = '/tmp/nvim-' .. vim.fn.getpid() .. '-stack-dumps.txt'
 ---@type file*?
 local periodic_stack_dump_file = nil
@@ -119,6 +110,7 @@ local function start_dumping_stack_periodically()
     return
   end
 
+  jit.off()
   debug.sethook(on_periodic_stack_dump, '', 1000000)
   vim.notify('Dumping periodic stack traces to ' .. periodic_stack_dump_file_path)
   has_added_thread_dump_hook = true
@@ -148,7 +140,9 @@ local function toggle_dumping_stack_periodically()
   end
 end
 
-vim.schedule(start_dumping_stack_periodically)
+-- Comment this out to turn on periodic stack dumps in all nvim processes to help track down infinite
+-- loop bugs in lua code
+-- vim.schedule(start_dumping_stack_periodically)
 
 --- Dump stack every after a number of instructions (useful to debug inifinite loops)
 vim.keymap.set('n', '<leader>Ud', toggle_dumping_stack_periodically, { desc = 'Toggle dumping of stack trace every so often' })
