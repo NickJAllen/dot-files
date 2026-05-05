@@ -142,7 +142,7 @@ end
 
 -- Comment this out to turn on periodic stack dumps in all nvim processes to help track down infinite
 -- loop bugs in lua code
--- vim.schedule(start_dumping_stack_periodically)
+vim.schedule(start_dumping_stack_periodically)
 
 --- Dump stack every after a number of instructions (useful to debug inifinite loops)
 vim.keymap.set('n', '<leader>Ud', toggle_dumping_stack_periodically, { desc = 'Toggle dumping of stack trace every so often' })
