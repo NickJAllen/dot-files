@@ -1,20 +1,19 @@
 #!/bin/sh
 
-cd $HOME/dev/bitwig/incoming.hg
-hg pull
+cd $HOME/dev/bitwig/mirror.git
+git fetch
 
-cd ../local.hg
-hg pull ../incoming.hg
+cd $HOME/dev/bitwig/bitwig-studio
+jj git fetch
 
 cd ../fixes
-hg pull
 echo "\n\nFixes:\n"
-hg up
+jj new fixes@origin
 echo "\n\nDev:\n"
 cd ../dev
-hg up
+jj new dev@origin
 
 echo "\n\nReleases:\n"
 cd ../releases
-hg up
+jj new releases@origin
 
