@@ -6,8 +6,7 @@ cd "$1" 2>/dev/null || exit
 
 # 1. Check for Jujutsu (jj)
 if jj root >/dev/null 2>&1; then
-  # Returns the change ID and branch/description summary
-  echo "jj:$(jj log -r @ -n 1 --template 'description.first_line()')"
+  jj log -r 'heads(::@ & bookmarks())' --no-graph -T 'bookmarks.map(|x| x.name()).join(", ")'
   exit
 fi
 
