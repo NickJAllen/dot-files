@@ -1,4 +1,5 @@
 #!/bin/sh
 
 cd $HOME/dev/bitwig/bitwig-studio
+jj git export
 jj git push
