@@ -6,4 +6,5 @@ email = "radicalnick@gmail.com"
 editor = "nvim"
 
 [revsets]
-log = 'present(@) | ancestors(immutable_heads().., 15) | trunk()'
+# log = 'present(@) | ancestors(immutable_heads().., 15) | trunk()'
+log = 'first_ancestors(@)'
