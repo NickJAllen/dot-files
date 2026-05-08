@@ -75,7 +75,7 @@ local function update_tmux_pane_directory()
     return
   end
 
-  local dir = vim.fs.dirname(vim.fs.abspath(path))
+  local dir = vim.fs.dirname(path)
 
   set_tmux_pane_directory(dir)
 end
