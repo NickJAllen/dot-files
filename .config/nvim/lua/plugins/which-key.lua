@@ -68,7 +68,6 @@ return {
         { '<leader>g', group = 'Git' },
         { '<leader>j', group = 'Jujutsu' },
         { '<leader>J', group = 'Java' },
-        { '<leader>m', group = 'Mercurial' },
         { '<leader>n', group = 'Neorg' },
         { '<leader>o', group = 'Overseer' },
         { '<leader>s', group = 'Search' },
