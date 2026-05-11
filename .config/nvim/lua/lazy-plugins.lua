@@ -7,6 +7,8 @@ require('lazy').setup({
   { import = 'plugins' },
 }, {
 
+  concurrency = 8,
+
   dev = {
     ---@type string | fun(plugin: LazyPlugin): string
     path = '~/dev/neovim-plugins',
