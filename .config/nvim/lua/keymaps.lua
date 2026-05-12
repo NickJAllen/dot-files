@@ -101,7 +101,7 @@ local function on_periodic_stack_dump()
   if f then
     f:write('\n--- TRACEBACK: ' .. os.date '%Y-%m-%d %H:%M:%S' .. ' ---\n')
     f:write(debug.traceback() .. '\n')
-    f:flush(f)
+    f:flush()
   end
 end
 
@@ -142,7 +142,7 @@ end
 
 -- Comment this out to turn on periodic stack dumps in all nvim processes to help track down infinite
 -- loop bugs in lua code
-vim.schedule(start_dumping_stack_periodically)
+--vim.schedule(start_dumping_stack_periodically)
 
 --- Dump stack every after a number of instructions (useful to debug inifinite loops)
 vim.keymap.set('n', '<leader>Ud', toggle_dumping_stack_periodically, { desc = 'Toggle dumping of stack trace every so often' })
