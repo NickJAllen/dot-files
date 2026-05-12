@@ -8,3 +8,6 @@ editor = "nvim"
 [revsets]
 # log = 'present(@) | ancestors(immutable_heads().., 15) | trunk()'
 log = 'first_ancestors(@)|descendants(@-)'
+
+[revset-aliases]
+"immutable_heads()" = "builtin_immutable_heads() | ~mine()"
