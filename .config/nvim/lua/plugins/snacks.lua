@@ -26,13 +26,13 @@ return {
       enabled = true,
     },
     animate = {
-      enabled = true,
+      enabled = false,
     },
     indent = {
       enabled = true,
     },
     scroll = {
-      enabled = true,
+      enabled = false,
     },
     bufdelete = {
       enabled = true,
