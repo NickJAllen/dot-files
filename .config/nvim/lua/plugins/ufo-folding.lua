@@ -12,7 +12,7 @@ return {
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
       vim.o.foldmethod = 'expr'
-      vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+      vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
       -- Use ufo for fold provider
       ufo.setup()
