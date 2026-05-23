@@ -41,6 +41,8 @@ vim.o.shiftwidth = 4 -- indentation width
 vim.o.expandtab = true -- use spaces instead of tabs
 vim.o.softtabstop = 4 -- insert 4 spaces when pressing Tab
 
+vim.o.conceallevel = 2
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
