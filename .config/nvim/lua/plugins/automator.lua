@@ -1,5 +1,5 @@
 local function key(k, action, desc)
-  return { k, ':Automator ' .. action .. '<CR>', { desc = desc, silent = true } }
+  return { k, ':Automator ' .. action .. '<CR>', desc = desc }
 end
 
 return {

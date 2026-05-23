@@ -59,8 +59,7 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>A', group = 'Automate' },
-        { '<leader>Aq', group = 'Automate Quickfix list' },
+        { '<leader>A', group = 'Automator' },
         { '<leader>b', group = 'Buffer' },
         { '<leader>c', group = 'Code' },
         { '<leader>d', group = 'Debug' },
@@ -68,7 +67,7 @@ return {
         { '<leader>g', group = 'Git' },
         { '<leader>j', group = 'Jujutsu' },
         { '<leader>J', group = 'Java' },
-        { '<leader>n', group = 'Neorg' },
+        { '<leader>n', group = 'Notes' },
         { '<leader>o', group = 'Overseer' },
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },

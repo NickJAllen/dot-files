@@ -1,5 +1,5 @@
 local function key(k, action, desc)
-  return { '<leader>n' .. k, ':Obsidian ' .. action .. '<CR>', { desc = desc, silent = true } }
+  return { '<leader>n' .. k, ':Obsidian ' .. action .. '<CR>', desc = desc }
 end
 
 return {
