@@ -23,6 +23,7 @@ return {
   cmd = 'Obsidian',
   keys = {
     key('n', 'new', 'New note'),
+    key('q', 'quick_switch', 'Quick switch'),
     key('s', 'search', 'Search for note'),
     key('t', 'tags', 'Tags'),
     key('w', 'workspace', 'Select workspace'),
