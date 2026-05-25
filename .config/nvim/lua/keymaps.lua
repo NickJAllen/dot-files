@@ -66,6 +66,23 @@ end, { desc = 'Go to next diagnostic error' })
 
 vim.keymap.set('n', '<leader>qd', nick.utils.deduplicate_qf, { desc = 'Remove duplicate entries from quickfix list' })
 
+-- incremental selection treesitter/lsp
+vim.keymap.set({ 'n', 'x', 'o' }, '<CR>', function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require('vim.treesitter._select').select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = 'Select parent node' })
+
+vim.keymap.set({ 'n', 'x', 'o' }, '<BS>', function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require('vim.treesitter._select').select_child(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(-vim.v.count1)
+  end
+end, { desc = 'Select child node' })
+
 -- Utilities
 --
 
