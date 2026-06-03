@@ -410,6 +410,13 @@ return {
       desc = 'Pause current session',
     },
     {
+      '<leader>dt',
+      function()
+        require('dap.ui.widgets').sidebar(require('dap.ui.widgets').threads).open()
+      end,
+      desc = 'Switch thread',
+    },
+    {
       '<leader>dvw',
       show_watches,
       desc = 'Watches',
