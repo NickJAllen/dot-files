@@ -4,6 +4,7 @@ cd $HOME/dev/bitwig/mirror.git
 git fetch
 
 cd $HOME/dev/bitwig/bitwig-studio
+jj workspace update-stale
 jj git fetch
 
 cd ../fixes
