@@ -1,6 +1,7 @@
 return {
   {
     'nicolasgb/jj.nvim',
+    enabled = false,
     dependencies = {
       'folke/snacks.nvim', -- Optional only if you use picker's
     },
