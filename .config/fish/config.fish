@@ -20,6 +20,7 @@ if status is-interactive
 
     set -gx RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
     set -gx EDITOR nvim
+    set -gx BWTEST_DATA $HOME/dev/bitwig-studio-tests/test-data
 
     switch (uname)
         case Linux
