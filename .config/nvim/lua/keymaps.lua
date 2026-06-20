@@ -39,6 +39,9 @@ vim.keymap.set({ 'n', 'x' }, '<leader>Y', '"+yg_', { desc = 'Copy line to system
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = 'Paste before from system clipboard' })
 
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection' })
+
 local nick = require 'nick'
 
 -- Buffer management
