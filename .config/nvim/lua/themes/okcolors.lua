@@ -1,1 +1,1 @@
-return { 'e-q/okcolors.nvim' }
+return { 'e-q/okcolors.nvim', lazy = true }

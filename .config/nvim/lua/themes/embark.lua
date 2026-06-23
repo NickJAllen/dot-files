@@ -1,6 +1,6 @@
 return {
   'embark-theme/vim',
-  lazy = false,
+  lazy = true,
   priority = 1000,
   name = 'embark',
 }

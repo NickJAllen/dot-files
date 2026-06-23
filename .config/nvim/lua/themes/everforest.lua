@@ -1,3 +1,3 @@
 return {
-  { 'sainnhe/everforest' },
+  { 'sainnhe/everforest', lazy = true },
 }

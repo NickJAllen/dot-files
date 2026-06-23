@@ -1,1 +1,1 @@
-return { 'oneslash/helix-nvim', version = '*' }
+return { 'oneslash/helix-nvim', version = '*', lazy = true }

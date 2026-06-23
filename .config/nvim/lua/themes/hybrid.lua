@@ -1,6 +1,6 @@
 return {
   'HoNamDuong/hybrid.nvim',
-  lazy = false,
+  lazy = true,
   priority = 1000,
   opts = {},
 }

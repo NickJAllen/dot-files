@@ -2,7 +2,7 @@ return {
   {
     'Kaikacy/Lemons.nvim',
     version = '*', -- for stable release
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
 }

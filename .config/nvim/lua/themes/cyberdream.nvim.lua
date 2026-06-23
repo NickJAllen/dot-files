@@ -1,3 +1,3 @@
 return {
-  { 'scottmckendry/cyberdream.nvim' },
+  { 'scottmckendry/cyberdream.nvim', lazy = true },
 }

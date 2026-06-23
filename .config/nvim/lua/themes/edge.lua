@@ -1,1 +1,1 @@
-return { { 'sainnhe/edge' } }
+return { { 'sainnhe/edge', lazy = true } }

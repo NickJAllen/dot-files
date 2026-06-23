@@ -1,1 +1,1 @@
-return { 'Shatur/neovim-ayu' }
+return { 'Shatur/neovim-ayu', lazy = true }

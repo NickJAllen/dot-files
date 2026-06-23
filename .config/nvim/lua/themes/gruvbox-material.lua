@@ -1,3 +1,3 @@
 return {
-  { 'sainnhe/gruvbox-material' },
+  { 'sainnhe/gruvbox-material', lazy = true },
 }

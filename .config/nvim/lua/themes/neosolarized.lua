@@ -1,6 +1,6 @@
 return {
   'svrana/neosolarized.nvim',
-  lazy = false,
+  lazy = true,
   priority = 1000,
   config = function()
     require('neosolarized').setup {

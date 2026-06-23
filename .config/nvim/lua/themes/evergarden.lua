@@ -1,6 +1,7 @@
 return {
   'everviolet/nvim',
   name = 'evergarden',
+  lazy = true,
   priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
   opts = {
     theme = {
