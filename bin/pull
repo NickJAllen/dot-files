@@ -9,10 +9,10 @@ jj git fetch
 
 cd ../fixes
 echo "\n\nFixes:\n"
-jj new fixes@origin
+jj new main/6.0@origin
 echo "\n\nDev:\n"
 cd ../dev
-jj new dev@origin
+jj new main/6.1@origin
 
 echo "\n\nReleases:\n"
 cd ../releases
