@@ -1,6 +1,6 @@
-function audio2vid --description "Convert an audio file with a single image into an MP4 video"
+function audio2video --description "Convert an audio file with a single image into an MP4 video"
     if test (count $argv) -lt 2
-        echo "Usage: audio2vid <audio_file> <image_file>"
+        echo "Usage: audio2video <audio_file> <image_file>"
         return 1
     end
 
