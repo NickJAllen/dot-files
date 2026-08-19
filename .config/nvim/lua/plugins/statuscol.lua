@@ -1,6 +1,8 @@
 return {
   {
     'luukvbaal/statuscol.nvim',
+    -- Disabled because for some reason this is causing nvim to crash after macOS update
+    enabled = false,
     config = function()
       local builtin = require 'statuscol.builtin'
 

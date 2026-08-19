@@ -40,6 +40,9 @@ return {
     dashboard = {
       enabled = true,
     },
+    statuscolumn = {
+      enabled = true,
+    },
     -- notifier = {},
   },
   keys = {
