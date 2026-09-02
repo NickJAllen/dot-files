@@ -1,11 +1,12 @@
 function add_title --description "Renders title text onto an image"
     set -l input_img $argv[1]
     set -l title $argv[2]
+    set -l output_img $argv[3]
 
     # Validate inputs
-    if test (count $argv) -lt 2
+    if test (count $argv) -lt 3
         echo "Error: Missing arguments."
-        echo "Usage: render_title <image_path> \"<title_text>\""
+        echo "Usage: render_title <image_path> \"<title_text>\" <output_img>"
         return 1
     end
 
@@ -13,11 +14,6 @@ function add_title --description "Renders title text onto an image"
         echo "Error: Image file '$input_img' not found."
         return 1
     end
-
-    # Format the output filename (replaces spaces with underscores)
-    # set -l clean_title (string replace --all " " "_" $title)
-    set -l ext (path extension $input_img)
-    set -l output_img "$title$ext"
 
     # Render text onto image using ImageMagick
     magick $input_img \
